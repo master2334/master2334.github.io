@@ -5,15 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Git以及Hexo博客使用经验 - master2334 Blog</title>
+    <title>Lenet网络：手写数字检测 - master2334 Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="Work makes me happy,Github Pages + Hexo搭建个人网站
-GitHub Pages和Hexo的介绍
-GitHub： Pages 是用来托管Github上静态网页的免费站点
-Hexo：hexo是一个简单快速,"> 
+    <meta name="description" content="Work makes me happy,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -61,7 +58,7 @@ Hexo：hexo是一个简单快速,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Git以及Hexo博客使用经验</h3>
+        <h3 class="subtitle">Lenet网络：手写数字检测</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -91,25 +88,25 @@ Hexo：hexo是一个简单快速,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/软件使用经验"><b>「
-                    </b>软件使用经验<b> 」</b></a>
+                <a href="/categories/程序经验"><b>「
+                    </b>程序经验<b> 」</b></a>
                 
                 January 11, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/01/11/GitHub%E7%9B%B8%E5%85%B3%E7%BB%8F%E9%AA%8C/" title="Git以及Hexo博客使用经验" class="">Git以及Hexo博客使用经验</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/01/11/%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E6%A3%80%E6%B5%8B%E7%BB%8F%E9%AA%8C/" title="Lenet网络：手写数字检测" class="">Lenet网络：手写数字检测</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    2.1k
+                    59
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
+                    1 mins.
                 </span>
                 
                 
@@ -121,6 +118,8 @@ Hexo：hexo是一个简单快速,">
                 
             </p>
             
+            
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/2%E5%B1%82%E5%8D%B7%E7%A7%AF%E7%BD%91%E8%B7%AF/" rel="tag">2层卷积网路</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/3-3%E5%8D%B7%E7%A7%AF%E6%A0%B8/" rel="tag">3*3卷积核</a></li></ul>
             
         </div>
     </div>
@@ -141,68 +140,7 @@ Hexo：hexo是一个简单快速,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="Github-Pages-Hexo搭建个人网站"><a href="#Github-Pages-Hexo搭建个人网站" class="headerlink" title="Github Pages + Hexo搭建个人网站"></a>Github Pages + Hexo搭建个人网站</h2><ol>
-<li>GitHub Pages和Hexo的介绍<ul>
-<li>GitHub： Pages 是用来托管Github上静态网页的免费站点</li>
-<li>Hexo：hexo是一个简单快速强大的静态博客框架</li>
-</ul>
-</li>
-<li>安装Node.js、Git、Hexo  </li>
-<li>进行Hexo的初始化配置</li>
-<li>在github中创建github.io远程仓库</li>
-<li>将本地的Hexo文件更新到Github库中<ul>
-<li>在_config.yml文件中修改repository，添加远程链接</li>
-</ul>
-</li>
-<li>将本地的Hexo文件更新到Github库中<ul>
-<li>在_config.yml文件中修改repository，添加远程链接</li>
-</ul>
-</li>
-<li>之后每次提交时，进行<code>git add *</code>操作将文件添加至暂存区，然后<code>git commit -m &quot;name&quot;</code>将文件添加至发送区，之后就可以通过<code>hexo d -g</code>将本次修改同步到博客中</li>
-</ol>
-<h2 id="连接本地仓库与github远程仓库"><a href="#连接本地仓库与github远程仓库" class="headerlink" title="连接本地仓库与github远程仓库"></a>连接本地仓库与github远程仓库</h2><ol>
-<li>终端输入<code>git init </code></li>
-<li>使用git bash时，需要git config配置个人信息<ul>
-<li><code>git config --global user.name &quot;用户名&quot;</code></li>
-<li><code>git config --global user.mail 邮箱@163.com</code></li>
-</ul>
-</li>
-<li>上传代码至暂存区 <ul>
-<li><code>git add *</code>  提交所有文件</li>
-<li><code>git add 文件名</code> 提交当前文件</li>
-<li><code>git commit -m &quot;提交说明&quot;</code></li>
-</ul>
-</li>
-<li>过程中可以使用指令来查看当前状态<ul>
-<li><code>git status</code> 查看当前操作状态</li>
-<li><code>git log</code>   查看提交记录</li>
-<li><code>git diff</code> 查看工作区与暂存区的差异</li>
-</ul>
-</li>
-<li>创建分支<ul>
-<li><code>git branch name</code> 创建新的分支</li>
-<li><code>git branch</code>  查看分支状态</li>
-<li><code>git checkout name</code> 切换分支</li>
-<li><code>git merge name</code> 合并分支</li>
-<li><code>git branch -d name</code> 删除分支</li>
-<li>每次在切换分支前，提交当前分支</li>
-</ul>
-</li>
-<li>提交至远程仓库<ul>
-<li>git push github main:main</li>
-</ul>
-</li>
-<li>操作结束 </li>
-</ol>
-<h2 id="从远程仓库拉取项目到本地"><a href="#从远程仓库拉取项目到本地" class="headerlink" title="从远程仓库拉取项目到本地"></a>从远程仓库拉取项目到本地</h2><ul>
-<li>本地需要初始化仓储</li>
-<li><code>git pull + 远程仓库链接</code></li>
-</ul>
-<h2 id="从远程仓库克隆项目到本地"><a href="#从远程仓库克隆项目到本地" class="headerlink" title="从远程仓库克隆项目到本地"></a>从远程仓库克隆项目到本地</h2><ul>
-<li><code>git clone + 远程仓库链接</code></li>
-<li>pull和clone一样，一般常使用pull，<code>pull只会做相应的合并，而多次使用clone会覆盖本地内容</code></li>
-</ul>
-
+            <h2 id=""><a href="#" class="headerlink" title=""></a></h2>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="false">
@@ -260,7 +198,7 @@ Hexo：hexo是一个简单快速,">
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E7%BD%91%E7%AB%99"><span class="toc-number">1.</span> <span class="toc-text">Github Pages + Hexo搭建个人网站</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E6%9C%AC%E5%9C%B0%E4%BB%93%E5%BA%93%E4%B8%8Egithub%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93"><span class="toc-number">2.</span> <span class="toc-text">连接本地仓库与github远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">3.</span> <span class="toc-text">从远程仓库拉取项目到本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93%E5%85%8B%E9%9A%86%E9%A1%B9%E7%9B%AE%E5%88%B0%E6%9C%AC%E5%9C%B0"><span class="toc-number">4.</span> <span class="toc-text">从远程仓库克隆项目到本地</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol>
                 </div>
             </div>
             
