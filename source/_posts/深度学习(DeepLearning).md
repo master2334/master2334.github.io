@@ -1,6 +1,6 @@
 ---
 title: 《深度学习DeepLearning》
-date: 2021:1:10 21:54
+date: 2021-1-10 21:54:00
 categories: 读书笔记
 ---
 
