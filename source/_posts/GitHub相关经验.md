@@ -13,6 +13,9 @@ categories: 软件使用经验
 4. 在github中创建github.io远程仓库
 5. 将本地的Hexo文件更新到Github库中
    - 在_config.yml文件中修改repository，添加远程链接
+6. 将本地的Hexo文件更新到Github库中
+   - 在_config.yml文件中修改repository，添加远程链接
+7. 之后每次提交时，进行`git add *`操作将文件添加至暂存区，然后``git commit -m "name"``将文件添加至发送区，之后就可以通过``hexo d -g``将本次修改同步到博客中
 
 ## 连接本地仓库与github远程仓库
 1. 终端输入```git init ```
