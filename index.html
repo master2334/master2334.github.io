@@ -75,6 +75,90 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-GitHub相关经验" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/11/GitHub%E7%9B%B8%E5%85%B3%E7%BB%8F%E9%AA%8C/" class="article-date">
+  <time class="dt-published" datetime="2021-01-11T13:51:15.804Z" itemprop="datePublished">2021-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Github-Pages-Hexo搭建个人网站"><a href="#Github-Pages-Hexo搭建个人网站" class="headerlink" title="Github Pages + Hexo搭建个人网站"></a>Github Pages + Hexo搭建个人网站</h1><ol>
+<li>GitHub Pages和Hexo的介绍<ul>
+<li>GitHub： Pages 是用来托管Github上静态网页的免费站点</li>
+<li>Hexo：hexo是一个简单快速强大的静态博客框架</li>
+</ul>
+</li>
+<li>安装Node.js、Git、Hexo  </li>
+<li>进行Hexo的初始化配置</li>
+<li>在github中创建github.io远程仓库</li>
+<li>将本地的Hexo文件更新到Github库中<ul>
+<li>在_config.yml文件中修改repository，添加远程链接</li>
+</ul>
+</li>
+</ol>
+<h1 id="连接本地仓库与github远程仓库"><a href="#连接本地仓库与github远程仓库" class="headerlink" title="连接本地仓库与github远程仓库"></a>连接本地仓库与github远程仓库</h1><ol>
+<li>终端输入<code>git init </code></li>
+<li>使用git bash时，需要git config配置个人信息<ul>
+<li><code>git config --global user.name &quot;用户名&quot;</code></li>
+<li><code>git config --global user.mail 邮箱@163.com</code></li>
+</ul>
+</li>
+<li>上传代码至暂存区 <ul>
+<li><code>git add *</code>  提交所有文件</li>
+<li><code>git add 文件名</code> 提交当前文件</li>
+<li><code>git commit -m &quot;提交说明&quot;</code></li>
+</ul>
+</li>
+<li>过程中可以使用指令来查看当前状态<ul>
+<li><code>git status</code> 查看当前操作状态</li>
+<li><code>git log</code>   查看提交记录</li>
+<li><code>git diff</code> 查看工作区与暂存区的差异</li>
+</ul>
+</li>
+<li>创建分支<ul>
+<li><code>git branch name</code> 创建新的分支</li>
+<li><code>git branch</code>  查看分支状态</li>
+<li><code>git checkout name</code> 切换分支</li>
+<li><code>git merge name</code> 合并分支</li>
+<li><code>git branch -d name</code> 删除分支</li>
+<li>每次在切换分支前，提交当前分支</li>
+</ul>
+</li>
+<li>提交至远程仓库<ul>
+<li>git push github main:main</li>
+</ul>
+</li>
+<li>操作结束 </li>
+</ol>
+<h1 id="从远程仓库拉取项目到本地"><a href="#从远程仓库拉取项目到本地" class="headerlink" title="从远程仓库拉取项目到本地"></a>从远程仓库拉取项目到本地</h1><ul>
+<li>本地需要初始化仓储</li>
+<li><code>git pull + 远程仓库链接</code></li>
+</ul>
+<h1 id="从远程仓库克隆项目到本地"><a href="#从远程仓库克隆项目到本地" class="headerlink" title="从远程仓库克隆项目到本地"></a>从远程仓库克隆项目到本地</h1><ul>
+<li><code>git clone + 远程仓库链接</code></li>
+<li>pull和clone一样，一般常使用pull，<code>pull只会做相应的合并，而多次使用clone会覆盖本地内容</code></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/11/GitHub%E7%9B%B8%E5%85%B3%E7%BB%8F%E9%AA%8C/" data-id="ckjsmk39b0000ygd1hco9012q" data-title="" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-神经网络基础" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/01/10/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" class="article-date">
@@ -351,6 +435,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/01/11/GitHub%E7%9B%B8%E5%85%B3%E7%BB%8F%E9%AA%8C/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2021/01/10/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/">神经网络基础</a>
