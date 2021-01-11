@@ -14,7 +14,7 @@
 <meta property="og:description" content="Github Pages + Hexo搭建个人网站 GitHub Pages和Hexo的介绍 GitHub： Pages 是用来托管Github上静态网页的免费站点 Hexo：hexo是一个简单快速强大的静态博客框架   安装Node.js、Git、Hexo   进行Hexo的初始化配置 在github中创建github.io远程仓库 将本地的Hexo文件更新到Github库中 在_config.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-11T13:51:15.804Z">
-<meta property="article:modified_time" content="2021-01-11T13:58:37.402Z">
+<meta property="article:modified_time" content="2021-01-11T14:09:57.625Z">
 <meta property="article:author" content="master2334">
 <meta name="twitter:card" content="summary">
   
@@ -112,6 +112,11 @@
 <li>在_config.yml文件中修改repository，添加远程链接</li>
 </ul>
 </li>
+<li>将本地的Hexo文件更新到Github库中<ul>
+<li>在_config.yml文件中修改repository，添加远程链接</li>
+</ul>
+</li>
+<li>之后每次提交时，进行<code>git add *</code>操作将文件添加至暂存区，然后<code>git commit -m &quot;name&quot;</code>将文件添加至发送区，之后就可以通过<code>hexo d -g</code>将本次修改同步到博客中</li>
 </ol>
 <h2 id="连接本地仓库与github远程仓库"><a href="#连接本地仓库与github远程仓库" class="headerlink" title="连接本地仓库与github远程仓库"></a>连接本地仓库与github远程仓库</h2><ol>
 <li>终端输入<code>git init </code></li>
