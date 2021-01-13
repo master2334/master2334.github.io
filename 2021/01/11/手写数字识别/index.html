@@ -105,7 +105,7 @@ import torch
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    5.4k
+                    5.5k
                 </span>
                 
                 
@@ -233,11 +233,10 @@ class Model(torch.nn.Module):
             torch.nn.MaxPool2d(stride=2,kernel_size=2))
 
         self.dense = torch.nn.Sequential(
-            # L
-
-
+            # Linear用于设置全连接层参数
             torch.nn.Linear(14*14*64,1024),
             torch.nn.ReLU(),
+            # 用于避免过拟合问题，下一层神经元随机按概率选择
             torch.nn.Dropout(p = 0.5),
             torch.nn.Linear(1024,10)
         )
