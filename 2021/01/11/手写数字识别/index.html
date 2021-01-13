@@ -124,7 +124,7 @@ import torch
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/2%E5%B1%82%E5%8D%B7%E7%A7%AF%E7%BD%91%E8%B7%AF/" rel="tag">2层卷积网路</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/3-3%E5%8D%B7%E7%A7%AF%E6%A0%B8/" rel="tag">3*3卷积核</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/1%E5%B1%822-2%E6%B1%A0%E5%8C%96%E5%B1%82/" rel="tag">1层2*2池化层</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/2%E5%B1%82%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C/" rel="tag">2层卷积网络</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/3-3%E5%8D%B7%E7%A7%AF%E6%A0%B8/" rel="tag">3*3卷积核</a></li></ul>
             
         </div>
     </div>
@@ -164,6 +164,7 @@ transform = transforms.Compose([transforms.ToTensor(),
 
 
 # 首先获取手写数字的训练集和测试集
+# datasets 的功能是设置数据集
 # root 用于指定数据集在下载之后的存放路径
 # transform 用于指定导入数据集需要对数据进行那种变化操作
 # train是指定在数据集下载完成后需要载入那部分数据，
@@ -177,12 +178,12 @@ data_train = datasets.MNIST(root=&quot;./data/&quot;,
 data_test = datasets.MNIST(root=&quot;./data/&quot;,
                            transform = transform,
                             train = False)
-# data_test的本质是一个可迭代的Dataloader，
+# data_test的本质是一个可迭代的Dataloader，使用next方法调用出一个
 # print(next(iter(data_test))[0].shape)
 
 #数据预览和数据装载
 # 下面对数据进行装载，我们可以将数据的载入理解为对图片的处理，
-# 在处理完成后，我们就需要将这些图片打包好送给我们的模型进行训练 了  而装载就是这个打包的过程
+# 在处理完成后，我们就需要将这些图片打包好送给我们的模型进行训练了  而装载就是这个打包的过程
 # dataset 参数用于指定我们载入的数据集名称
 # batch_size参数设置了每个包中的图片数据个数
 #  在装载的过程会将数据随机打乱顺序并进打包
@@ -354,7 +355,7 @@ print(&quot;time is %s&quot; %(stop_time-start_time))</code></pre>
                 <ul>
                     <li><a href="/">5 <p>Articles</p></a></li>
                     <li><a href="/categories">5 <p>Categories</p></a></li>
-                    <li><a href="/tags">13 <p>Tags</p></a></li>
+                    <li><a href="/tags">14 <p>Tags</p></a></li>
                 </ul>
             </div>
             
