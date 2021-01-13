@@ -9,16 +9,16 @@ tags:
 ---
 
 ## Github Pages + Hexo搭建个人网站
-1. GitHub Pages和Hexo的介绍
-   - GitHub： Pages 是用来托管Github上静态网页的免费站点
-   - Hexo：hexo是一个简单快速强大的静态博客框架
+1. GitHub Pages和Hexo的介绍  
+   - GitHub： Pages 是用来托管Github上静态网页的免费站点  
+   - Hexo：hexo是一个简单快速强大的静态博客框架  
 2. 安装Node.js、Git、Hexo  
 3. 进行Hexo的初始化配置
 4. 在github中创建github.io远程仓库
-5. 将本地的Hexo文件更新到Github库中
-   - 在_config.yml文件中修改repository，添加远程链接
-   - `ssh-keygen -t rsa -C email@email.com`
-   - 测试是否成功：`ssh -T git@github.com`
+5. 将本地的Hexo文件更新到Github库中  
+   - 在_config.yml文件中修改repository，添加远程链接  
+   - `ssh-keygen -t rsa -C email@email.com`  
+   - 测试是否成功：`ssh -T git@github.com`  
 6. 将本地的Hexo文件更新到Github库中
    - 在_config.yml文件中修改repository，添加远程链接
 7. 之后每次提交时，进行`git add *`操作将文件添加至暂存区，然后``git commit -m "name"``将文件添加至发送区，之后就可以通过``hexo d -g``将本次修改同步到博客中
