@@ -4,6 +4,48 @@
   
     
     <entry>
+      <title>Python爬取疫情实时数据</title>
+      <link href="2021/01/18/Python%E7%88%AC%E5%8F%96%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE/"/>
+      <url>2021/01/18/Python%E7%88%AC%E5%8F%96%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="用python爬取疫情数据网站的实时数据流"><a href="#用python爬取疫情数据网站的实时数据流" class="headerlink" title="用python爬取疫情数据网站的实时数据流"></a>用python爬取疫情数据网站的实时数据流</h2><p>一些网站的数据并没有写在html源码中，而是通过数据流实时获取的，因此需要在F12中找到数据流的JSON文件，通过解析JSON文件来获取自己想要的信息。</p><pre><code class="python">import requestsfrom bs4 import BeautifulSoupfrom fake_useragent import UserAgentimport json, jsonpathimport sqlite3url = &#39;https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=chinaDayList,chinaDayAddList,nowConfirmStatis,provinceCompare&#39;conn = sqlite3.connect(&#39;.\YQdata.db&#39;)c = conn.cursor()c.execute(&#39;&#39;&#39;CREATE TABLE IF NOT EXISTS datas             (Province text, nowConfirm text, confirmAdd text, dead text, heal text)&#39;&#39;&#39;)#requests.session() 会话保持，可以让我们在跨请求时保存某些操作#在爬虫中，需要用到session来保持登录状态，一些网站会要求强制登陆，登录信息不完整时，返回的数据信息也不完整session = requests.session()result = session.get(url)#json.loads()  将json格式解析为dict格式  #json.dumps()  将dict格式解析为json格式resJson = json.loads(result.text)data = jsonpath.jsonpath(resJson, &#39;$.data.chinaDayAddList.*&#39;)for d in data:    #res为字符串格式的拼接   d[&#39;date&#39;]为字典键值的引用    res = &#39;日期:&#39; + d[&#39;date&#39;] + &#39;--&#39; + &#39;新增确诊:&#39; + str(d[&#39;confirm&#39;]) + &#39;--&#39; + &#39;死亡人数:&#39; + str(d[&#39;dead&#39;]) + &#39;--&#39; + &#39;感染人数:&#39; + str(d[&#39;infect&#39;])+ &#39;--&#39; + &#39;治愈人数:&#39; + str(d[&#39;heal&#39;])    # 保存数据到指定路径    file = &#39;.\global-yq.txt&#39;    with open(file, &#39;a+&#39;,encoding=&#39;utf-8&#39;) as f:        f.write(res + &#39;\n&#39;)  # 加\n换行显示data2 = jsonpath.jsonpath(resJson, &#39;$.data.provinceCompare.&#39;)# 字典格式的常用方法# for k in data2[0].values():#     print(data2[0][k])#使用zip方法，将两个list同时迭代for (key, value) in zip(data2[0].keys(), data2[0].values()):   # print(value)    com = &quot;INSERT INTO datas VALUES (?,?,?,?,?)&quot;    c.execute(com,tuple((str(key),value[&#39;nowConfirm&#39;],value[&#39;confirmAdd&#39;],value[&#39;dead&#39;],value[&#39;heal&#39;])))    res =  str(key) + &#39;--&#39; + &#39;新增确诊:&#39; + str(value[&#39;nowConfirm&#39;])  + &#39;--&#39; + &#39;无症状感染者:&#39; + str(value[&#39;confirmAdd&#39;]) + &#39;--&#39; +  &#39;死亡人数:&#39; + str(value[&#39;dead&#39;]) + &#39;--&#39; +  &#39;治愈人数:&#39; + str(value[&#39;heal&#39;])    # 保存数据到我的d盘    file = &#39;.\china-yq.txt&#39;    with open(file, &#39;a+&#39;,encoding=&#39;utf-8&#39;) as f:        f.write(res + &#39;\n&#39;)  # 加\n换行显示conn.commit()conn.close()</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 程序经验 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> 爬虫 </tag>
+            
+            <tag> 实时数据流 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="2021/01/14/DogVSCats%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/"/>
+      <url>2021/01/14/DogVSCats%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</url>
+      
+        <content type="html"><![CDATA[<h1 id="迁移学习-VGGNet、VGG16、ResNet50"><a href="#迁移学习-VGGNet、VGG16、ResNet50" class="headerlink" title="迁移学习 VGGNet、VGG16、ResNet50"></a>迁移学习 VGGNet、VGG16、ResNet50</h1><p>按照下载好的数据集运行时,会出现如下错误：</p><pre><code class="python">RuntimeError: Found 0 files in subfolders of: ./DogsVSCats/validSupported extensions are: .jpg,.jpeg,.png,.ppm,.bmp,.pgm,.tif,.tiff,.webp</code></pre><p>此时需要按照image/image/picture的排列方式，新建文件夹。</p><pre><code class="python">data_dir = &quot;./DogsVSCats/&quot;</code></pre><p>import torch<br>import torchvision<br>from torchvision import datasets,transforms<br>import os<br>import matplotlib.pyplot as plt<br>import time</p><h1 id="data-dir-os-getcwd"><a href="#data-dir-os-getcwd" class="headerlink" title="data_dir = os.getcwd()"></a>data_dir = os.getcwd()</h1><h1 id="data-dir-os-path-join-data-dir-”DogsVSCats”"><a href="#data-dir-os-path-join-data-dir-”DogsVSCats”" class="headerlink" title="data_dir = os.path.join(data_dir,”DogsVSCats”)"></a>data_dir = os.path.join(data_dir,”DogsVSCats”)</h1><p>data_dir = “./DogsVSCats/“</p><p>data_transform = {<br>    x:transforms.Compose(<br>        [<br>            transforms.Scale([64,64]),    #Scale类将原始图片的大小统一缩放至64×64<br>            transforms.ToTensor()<br>        ]<br>    )<br>    for x in [“train”,”valid”]<br>}</p><p>image_datasets = {<br>    x:datasets.ImageFolder(<br>        root=os.path.join(data_dir,x),<br>        #将输入参数中的两个名字拼接成一个完整的文件路径<br>        transform=data_transform[x]<br>    )<br>    for x in [“train”,”valid”]<br>}</p><p>dataloader = {<br>    x:torch.utils.data.DataLoader(<br>        dataset=image_datasets[x],<br>        batch_size=16,<br>        shuffle=True<br>    )<br>    for x in [“train”,”valid”]<br>}</p><p>X_example, Y_example = next(iter(dataloader[‘train’]))<br>print(‘X_example个数{}’.format(len(X_example)))   #X_example个数16<br>print(‘Y_example个数{}’.format(len(Y_example)))   #Y_example个数16</p><p>index_classes = image_datasets[‘train’].class_to_idx   # 显示类别对应的独热编码<br>print(index_classes)     #{‘cat’: 0, ‘dog’: 1}</p><p>example_classes = image_datasets[‘train’].classes     # 将原始图像的类别保存起来<br>print(example_classes)       #[‘cat’, ‘dog’]</p><p>img = torchvision.utils.make_grid(X_example)<br>img = img.numpy().transpose([1,2,0])<br>print([example_classes[i] for i in Y_example])<br>#[‘cat’, ‘cat’, ‘cat’, ‘cat’, ‘dog’, ‘cat’, ‘cat’, ‘dog’, ‘cat’, ‘cat’, ‘dog’, ‘dog’, ‘cat’, ‘dog’, ‘dog’, ‘cat’]<br>plt.imshow(img)<br>plt.show()</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PyTorch学习笔记</title>
       <link href="2021/01/12/PyTorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
       <url>2021/01/12/PyTorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
