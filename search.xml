@@ -33,13 +33,27 @@
     
     
     <entry>
-      <title></title>
-      <link href="2021/01/14/DogVSCats%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/"/>
-      <url>2021/01/14/DogVSCats%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</url>
+      <title>神经网络应用之DogVSCats</title>
+      <link href="2021/01/16/DogVSCats%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/"/>
+      <url>2021/01/16/DogVSCats%E7%8C%AB%E7%8B%97%E5%A4%A7%E6%88%98/</url>
       
         <content type="html"><![CDATA[<h1 id="迁移学习-VGGNet、VGG16、ResNet50"><a href="#迁移学习-VGGNet、VGG16、ResNet50" class="headerlink" title="迁移学习 VGGNet、VGG16、ResNet50"></a>迁移学习 VGGNet、VGG16、ResNet50</h1><p>按照下载好的数据集运行时,会出现如下错误：</p><pre><code class="python">RuntimeError: Found 0 files in subfolders of: ./DogsVSCats/validSupported extensions are: .jpg,.jpeg,.png,.ppm,.bmp,.pgm,.tif,.tiff,.webp</code></pre><p>此时需要按照image/image/picture的排列方式，新建文件夹。</p><pre><code class="python">data_dir = &quot;./DogsVSCats/&quot;</code></pre><p>import torch<br>import torchvision<br>from torchvision import datasets,transforms<br>import os<br>import matplotlib.pyplot as plt<br>import time</p><h1 id="data-dir-os-getcwd"><a href="#data-dir-os-getcwd" class="headerlink" title="data_dir = os.getcwd()"></a>data_dir = os.getcwd()</h1><h1 id="data-dir-os-path-join-data-dir-”DogsVSCats”"><a href="#data-dir-os-path-join-data-dir-”DogsVSCats”" class="headerlink" title="data_dir = os.path.join(data_dir,”DogsVSCats”)"></a>data_dir = os.path.join(data_dir,”DogsVSCats”)</h1><p>data_dir = “./DogsVSCats/“</p><p>data_transform = {<br>    x:transforms.Compose(<br>        [<br>            transforms.Scale([64,64]),    #Scale类将原始图片的大小统一缩放至64×64<br>            transforms.ToTensor()<br>        ]<br>    )<br>    for x in [“train”,”valid”]<br>}</p><p>image_datasets = {<br>    x:datasets.ImageFolder(<br>        root=os.path.join(data_dir,x),<br>        #将输入参数中的两个名字拼接成一个完整的文件路径<br>        transform=data_transform[x]<br>    )<br>    for x in [“train”,”valid”]<br>}</p><p>dataloader = {<br>    x:torch.utils.data.DataLoader(<br>        dataset=image_datasets[x],<br>        batch_size=16,<br>        shuffle=True<br>    )<br>    for x in [“train”,”valid”]<br>}</p><p>X_example, Y_example = next(iter(dataloader[‘train’]))<br>print(‘X_example个数{}’.format(len(X_example)))   #X_example个数16<br>print(‘Y_example个数{}’.format(len(Y_example)))   #Y_example个数16</p><p>index_classes = image_datasets[‘train’].class_to_idx   # 显示类别对应的独热编码<br>print(index_classes)     #{‘cat’: 0, ‘dog’: 1}</p><p>example_classes = image_datasets[‘train’].classes     # 将原始图像的类别保存起来<br>print(example_classes)       #[‘cat’, ‘dog’]</p><p>img = torchvision.utils.make_grid(X_example)<br>img = img.numpy().transpose([1,2,0])<br>print([example_classes[i] for i in Y_example])<br>#[‘cat’, ‘cat’, ‘cat’, ‘cat’, ‘dog’, ‘cat’, ‘cat’, ‘dog’, ‘cat’, ‘cat’, ‘dog’, ‘dog’, ‘cat’, ‘dog’, ‘dog’, ‘cat’]<br>plt.imshow(img)<br>plt.show()</p>]]></content>
       
       
+      <categories>
+          
+          <category> 神经网络 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 神经网络 </tag>
+            
+            <tag> 猫狗大战 </tag>
+            
+        </tags>
       
     </entry>
     
