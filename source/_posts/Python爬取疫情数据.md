@@ -10,6 +10,7 @@ tags:
 
 ## 用python爬取疫情数据网站的实时数据流
 一些网站的数据并没有写在html源码中，而是通过数据流实时获取的，因此需要在F12中找到数据流的JSON文件，通过解析JSON文件来获取自己想要的信息。
+此程序的功能是通过`json.loads()`解析json源文件，然后将json源文件保存在txt文件以及数据库中。
 ```python
 import requests
 from bs4 import BeautifulSoup

@@ -1,3 +1,11 @@
+---
+title: 神经网络应用之DogVSCats
+date: 2021-1-16 11:30:00
+categories: 神经网络 
+tags: 
+- 神经网络
+- 猫狗大战
+---
 # 迁移学习 VGGNet、VGG16、ResNet50
 按照下载好的数据集运行时,会出现如下错误：
 ```python
