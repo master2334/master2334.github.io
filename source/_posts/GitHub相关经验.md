@@ -54,3 +54,8 @@ tags:
 ## 从远程仓库克隆项目到本地
 - ```git clone + 远程仓库链接```
 - pull和clone一样，一般常使用pull，`pull只会做相应的合并，而多次使用clone会覆盖本地内容`
+
+## 在新设备上使用hexo
+- 安装`Node.js`以及`git`
+- 安装成功后，创建本地文件夹并` git clone `远程仓库
+- git pull 拉取相关内容后，注意`git checkout master`分支切换
