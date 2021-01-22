@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="2021/01/21/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
+      <url>2021/01/21/git%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
+      
+        <content type="html"><![CDATA[<h1 id="vscode与github远程仓库的连接"><a href="#vscode与github远程仓库的连接" class="headerlink" title="vscode与github远程仓库的连接"></a>vscode与github远程仓库的连接</h1><ul><li>先在github上建立新的仓库<ul><li>出现fatal: not a git repository (or any of the parent directories): .git， 则是缺少.git文件 输入git init 即可解决</li></ul></li><li>git remote add github + http链接</li><li>分支状态可在左下角查看</li><li>git checkout 切换分支<h1 id="vscode-直接下载github项目"><a href="#vscode-直接下载github项目" class="headerlink" title="vscode 直接下载github项目"></a>vscode 直接下载github项目</h1></li><li>复制需要下载的github仓库链接</li><li>切换到目标目录</li><li>vscode终端输入git clone + url</li><li></li></ul><h1 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h1><p>git fetch</p><h1 id="hexo-io"><a href="#hexo-io" class="headerlink" title="hexo.io"></a>hexo.io</h1><ul><li>博客格式设置时，在_config.yml里找到对应项目进行修改<br>hexo g -d </li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Python爬取疫情实时数据</title>
       <link href="2021/01/18/Python%E7%88%AC%E5%8F%96%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE/"/>
       <url>2021/01/18/Python%E7%88%AC%E5%8F%96%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE/</url>
