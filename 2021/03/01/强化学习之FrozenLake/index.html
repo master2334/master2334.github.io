@@ -11,12 +11,10 @@
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
     <meta name="description" content="Work makes me happy,
-使用Open-AI中的gym库创建环境。
-确定好需要使用的参数值。
-根据贪婪率确定下一步的行为。
-获得新的环境，状态，奖励信息。
-获得新的Q值矩阵。import torch
-import time,"> 
+使用Open-AI中的gym库创建环境。import torch
+import time
+import matplotlib.pyplot as plt
+from gym.envs.registr,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -147,11 +145,7 @@ import time,">
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <ul>
-<li>使用Open-AI中的gym库创建环境。</li>
-<li>确定好需要使用的参数值。</li>
-<li>根据贪婪率确定下一步的行为。</li>
-<li>获得新的环境，状态，奖励信息。</li>
-<li>获得新的Q值矩阵。<pre><code class="python">import torch
+<li>使用Open-AI中的gym库创建环境。<pre><code class="python">import torch
 import time
 import matplotlib.pyplot as plt
 from gym.envs.registration import register
@@ -163,8 +157,9 @@ register(
 )
 plt.ion() #plt默认为阻塞模式，.ion为解除阻塞
 env = gym.make(&#39;FrozenLakeNotSlippery-v0&#39;)#创建环境
-env.render() #加载图像引擎
-number_of_states = env.observation_space.n
+env.render() #加载图像引擎</code></pre>
+</li>
+<li>确定好需要使用的参数值。<pre><code class="python">number_of_states = env.observation_space.n
 number_of_actions = env.action_space.n
 print( &quot;States = &quot;, number_of_states)
 print( &quot;Actions = &quot;, number_of_actions)
@@ -172,49 +167,66 @@ num_episodes = 1000
 steps_total = []
 rewards_total = []
 egreedy_total = []
-</code></pre>
+gamma = 0.95  # 未来行为最大化收益的期望占比
+learning_rate = 0.9   #学习率
+egreedy = 0.7  #贪婪率    值越低，代表经验占比越高
+egreedy_final = 0.1
+egreedy_decay = 0.999
+Q = torch.zeros([number_of_states, number_of_actions])   #创建一个新的Q值矩阵</code></pre>
+</li>
+<li>本段代码的意图为首先根据贪婪率确定下一步的行为，然后把行为赋值到环境中，获得新的环境以及行为状态。</li>
+<li>获得新的Q值矩阵。</li>
+<li>获得新的状态，行为信息。<pre><code class="python">for i_episode in range(num_episodes):
+  # 重置环境
+  state = env.reset()
+  step = 0
+  while True:
+      step += 1
+      random_for_egreedy = torch.rand(1)[0]
+      if random_for_egreedy &gt; egreedy:      
+          random_values = Q[state] + torch.rand(1,number_of_actions) / 1000      
+          action = torch.max(random_values,1)[1][0]  
+          #torch.max(tensor, dim)  dim是索引的维度  0是每列的最大值，1是每行的最大值
+          #函数会返回两个tensor，第一个tensor是每行的最大值，softmax的输出中最大的是1，所以第一个tensor是全1的tensor；第二个tensor是每行最大值的索引。
+          action = action.item()
+      else:
+          action = env.action_space.sample()
+      if egreedy &gt; egreedy_final:
+          egreedy *= egreedy_decay
+      new_state, reward, done, info = env.step(action)
+      # Filling the Q Table
+      Q[state, action] = reward + gamma * torch.max(Q[new_state])
+      # Setting new state for next action
+      state = new_state
+      # env.render()
+      # time.sleep(0.4)
+      if done:
+          steps_total.append(step)
+          rewards_total.append(reward)
+          egreedy_total.append(egreedy)
+          if i_episode % 10 == 0:
+              print(&#39;Episode: &#123;&#125; Reward: &#123;&#125; Steps Taken: &#123;&#125;&#39;.format(i_episode,reward, step))
+          break</code></pre>
+</li>
+<li>在plt中显示rewards，steps，egreedy的变化曲线<pre><code class="python">print(&quot;Percent of episodes finished successfully: &#123;0&#125;&quot;.format(sum(rewards_total)/num_episodes))
+print(&quot;Percent of episodes finished successfully (last 100 episodes): &#123;0&#125;&quot;.format(sum(rewards_total[-100:])/100))
+print(&quot;Average number of steps: %.2f&quot; % (sum(steps_total)/num_episodes))
+print(&quot;Average number of steps (last 100 episodes): %.2f&quot; % (sum(steps_total[-100:])/100))
+plt.figure(figsize=(6,3))
+plt.title(&quot;Rewards&quot;)
+plt.bar(torch.arange(len(rewards_total)), rewards_total, alpha=0.6, color=&#39;green&#39;, width=5)
+plt.show()
+plt.figure(figsize=(6,3))
+plt.title(&quot;Steps / Episode length&quot;)
+plt.bar(torch.arange(len(steps_total)), steps_total, alpha=0.6, color=&#39;red&#39;, width=5)
+plt.show()
+plt.figure(figsize=(6,3))
+plt.title(&quot;Egreedy value&quot;)
+plt.bar(torch.arange(len(egreedy_total)), egreedy_total, alpha=0.6, color=&#39;blue&#39;, width=5)
+plt.ioff()
+plt.show()</code></pre>
 </li>
 </ul>
-<p>gamma = 0.95  # 未来行为最大化收益的期望占比<br>learning_rate = 0.9   #学习率</p>
-<p>egreedy = 0.7  #贪婪率    值越低，代表经验占比越高<br>egreedy_final = 0.1<br>egreedy_decay = 0.999</p>
-<p>Q = torch.zeros([number_of_states, number_of_actions])   #创建一个新的Q值矩阵<br>print(Q)<br>#本段代码的意图为首先根据贪婪率确定下一步的行为，然后把行为赋值到环境中，获得新的环境以及行为状态<br>for i_episode in range(num_episodes):<br>    # 重置环境<br>    state = env.reset()<br>    step = 0<br>    while True:<br>        step += 1<br>        random_for_egreedy = torch.rand(1)[0]</p>
-<pre><code>    if random_for_egreedy &gt; egreedy:      
-        random_values = Q[state] + torch.rand(1,number_of_actions) / 1000      
-        action = torch.max(random_values,1)[1][0]  
-        #torch.max(tensor, dim)  dim是索引的维度  0是每列的最大值，1是每行的最大值
-        #函数会返回两个tensor，第一个tensor是每行的最大值，softmax的输出中最大的是1，所以第一个tensor是全1的tensor；第二个tensor是每行最大值的索引。
-        action = action.item()
-    else:
-        action = env.action_space.sample()
-
-    if egreedy &gt; egreedy_final:
-        egreedy *= egreedy_decay
-
-    new_state, reward, done, info = env.step(action)
-
-    # Filling the Q Table
-    Q[state, action] = reward + gamma * torch.max(Q[new_state])
-
-    # Setting new state for next action
-    state = new_state
-
-    # env.render()
-    # time.sleep(0.4)
-
-    if done:
-        steps_total.append(step)
-        rewards_total.append(reward)
-        egreedy_total.append(egreedy)
-        if i_episode % 10 == 0:
-            print(&#39;Episode: &#123;&#125; Reward: &#123;&#125; Steps Taken: &#123;&#125;&#39;.format(i_episode,reward, step))
-        break</code></pre>
-<p>print(Q)</p>
-<p>print(“Percent of episodes finished successfully: {0}”.format(sum(rewards_total)/num_episodes))<br>print(“Percent of episodes finished successfully (last 100 episodes): {0}”.format(sum(rewards_total[-100:])/100))</p>
-<p>print(“Average number of steps: %.2f” % (sum(steps_total)/num_episodes))<br>print(“Average number of steps (last 100 episodes): %.2f” % (sum(steps_total[-100:])/100))</p>
-<p>plt.figure(figsize=(6,3))<br>plt.title(“Rewards”)<br>plt.bar(torch.arange(len(rewards_total)), rewards_total, alpha=0.6, color=’green’, width=5)<br>plt.show()</p>
-<p>plt.figure(figsize=(6,3))<br>plt.title(“Steps / Episode length”)<br>plt.bar(torch.arange(len(steps_total)), steps_total, alpha=0.6, color=’red’, width=5)<br>plt.show()</p>
-<p>plt.figure(figsize=(6,3))<br>plt.title(“Egreedy value”)<br>plt.bar(torch.arange(len(egreedy_total)), egreedy_total, alpha=0.6, color=’blue’, width=5)<br>plt.ioff()<br>plt.show()</p>
-<pre><code></code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"

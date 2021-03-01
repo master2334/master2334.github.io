@@ -83,17 +83,14 @@
                                         <a class="timeline-title" target="_self" href="/2021/03/01/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B9%8BFrozenLake/">《强化学习之FrozenLake》</a>
                                         <p>
                                             
-使用Open-AI中的gym库创建环境。
-确定好需要使用的参数值。
-根据贪婪率确定下一步的行为。
-获得新的环境，状态，奖励信息。
-获得新的Q值矩阵。import torch
+使用Open-AI中的gym库创建环境。import torch
 import time
 import matplotlib.pyplot as plt
 from gym.envs.registration import register
 import gym
 register(
- ...
+  id=&#39;FrozenLakeNotSlippery-v0&#39;,
+  entry_point=...
                                         </p>
                                     </div>
                                 </li>
