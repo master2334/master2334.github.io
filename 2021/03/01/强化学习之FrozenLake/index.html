@@ -10,7 +10,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="Work makes me happy,import torchimport timeimport matplotlib.pyplot as pltfrom gym.envs.registration import registerimp,"> 
+    <meta name="description" content="Work makes me happy,
+使用Open-AI中的gym库创建环境。import torch
+import time
+import matplotlib.pyplot as plt
+from gym.envs.registr,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -100,7 +104,7 @@
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    5.3k
+                    5.4k
                 </span>
                 
                 
@@ -140,7 +144,22 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <p>import torch<br>import time<br>import matplotlib.pyplot as plt<br>from gym.envs.registration import register<br>import gym<br>register(<br>    id=’FrozenLakeNotSlippery-v0’,<br>    entry_point=’gym.envs.toy_text:FrozenLakeEnv’,<br>    kwargs={‘map_name’ : ‘4x4’, ‘is_slippery’: False},<br>)<br>plt.ion()<br>env = gym.make(‘FrozenLakeNotSlippery-v0’)</p>
+            <ul>
+<li>使用Open-AI中的gym库创建环境。<pre><code class="python">import torch
+import time
+import matplotlib.pyplot as plt
+from gym.envs.registration import register
+import gym
+register(
+  id=&#39;FrozenLakeNotSlippery-v0&#39;,
+  entry_point=&#39;gym.envs.toy_text:FrozenLakeEnv&#39;,
+  kwargs=&#123;&#39;map_name&#39; : &#39;4x4&#39;, &#39;is_slippery&#39;: False&#125;,
+)
+plt.ion()
+env = gym.make(&#39;FrozenLakeNotSlippery-v0&#39;)
+</code></pre>
+</li>
+</ul>
 <h1 id="Instantiate-the-Environment"><a href="#Instantiate-the-Environment" class="headerlink" title="Instantiate the Environment."></a>Instantiate the Environment.</h1><h1 id="env-gym-make-‘FrozenLake-v0’"><a href="#env-gym-make-‘FrozenLake-v0’" class="headerlink" title="env = gym.make(‘FrozenLake-v0’)"></a>env = gym.make(‘FrozenLake-v0’)</h1><h1 id="To-check-all-environments-present-in-OpenAI"><a href="#To-check-all-environments-present-in-OpenAI" class="headerlink" title="To check all environments present in OpenAI"></a>To check all environments present in OpenAI</h1><h1 id="print-envs-registry-all"><a href="#print-envs-registry-all" class="headerlink" title="print(envs.registry.all())"></a>print(envs.registry.all())</h1><p>env.render()</p>
 <p>number_of_states = env.observation_space.n<br>number_of_actions = env.action_space.n<br>print( “States = “, number_of_states)<br>print( “Actions = “, number_of_actions)</p>
 <p>num_episodes = 1000<br>steps_total = []<br>rewards_total = []<br>egreedy_total = []</p>
@@ -185,6 +204,7 @@
 <p>plt.figure(figsize=(6,3))<br>plt.title(“Rewards”)<br>plt.bar(torch.arange(len(rewards_total)), rewards_total, alpha=0.6, color=’green’, width=5)<br>plt.show()</p>
 <p>plt.figure(figsize=(6,3))<br>plt.title(“Steps / Episode length”)<br>plt.bar(torch.arange(len(steps_total)), steps_total, alpha=0.6, color=’red’, width=5)<br>plt.show()</p>
 <p>plt.figure(figsize=(6,3))<br>plt.title(“Egreedy value”)<br>plt.bar(torch.arange(len(egreedy_total)), egreedy_total, alpha=0.6, color=’blue’, width=5)<br>plt.ioff()<br>plt.show()</p>
+<pre><code></code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
