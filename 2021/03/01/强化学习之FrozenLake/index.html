@@ -11,10 +11,11 @@
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
     <meta name="description" content="Work makes me happy,
-使用Open-AI中的gym库创建环境。import torch
+使用Open-AI中的gym库创建环境。
+import torch
 import time
 import matplotlib.pyplot as plt
-from gym.envs.registr,"> 
+from gym.envs.regist,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -104,7 +105,7 @@ from gym.envs.registr,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.2k
+                    3.3k
                 </span>
                 
                 
@@ -145,7 +146,8 @@ from gym.envs.registr,">
     <div class='main'>
         <div class="content markdown animated fadeIn">
             <ul>
-<li>使用Open-AI中的gym库创建环境。<pre><code class="python">import torch
+<li>使用Open-AI中的gym库创建环境。</li>
+<li><pre><code class="python">import torch
 import time
 import matplotlib.pyplot as plt
 from gym.envs.registration import register
@@ -155,18 +157,17 @@ register(
   entry_point=&#39;gym.envs.toy_text:FrozenLakeEnv&#39;,
   kwargs=&#123;&#39;map_name&#39; : &#39;4x4&#39;, &#39;is_slippery&#39;: False&#125;,
 )
-plt.ion()
-env = gym.make(&#39;FrozenLakeNotSlippery-v0&#39;)
+plt.ion() #plt默认为阻塞模式，.ion为解除阻塞
+env = gym.make(&#39;FrozenLakeNotSlippery-v0&#39;)#创建环境
 </code></pre>
 </li>
 </ul>
-<p>env.render()</p>
+<p>env.render() #加载图像引擎</p>
 <p>number_of_states = env.observation_space.n<br>number_of_actions = env.action_space.n<br>print( “States = “, number_of_states)<br>print( “Actions = “, number_of_actions)</p>
 <p>num_episodes = 1000<br>steps_total = []<br>rewards_total = []<br>egreedy_total = []</p>
-<p>gamma = 0.95<br>learning_rate = 0.9</p>
-<p>egreedy = 0.7<br>egreedy_final = 0.1<br>egreedy_decay = 0.999</p>
-<p>Q = torch.zeros([number_of_states, number_of_actions])<br>print(Q)</p>
-<p>for i_episode in range(num_episodes):<br>    # resets the environment<br>    state = env.reset()<br>    step = 0<br>    while True:<br>        step += 1<br>        random_for_egreedy = torch.rand(1)[0]</p>
+<p>gamma = 0.95  # 未来行为最大化收益的期望占比<br>learning_rate = 0.9   #学习率</p>
+<p>egreedy = 0.7  #贪婪率    值越低，代表经验占比越高<br>egreedy_final = 0.1<br>egreedy_decay = 0.999</p>
+<p>Q = torch.zeros([number_of_states, number_of_actions])   #创建一个新的Q值矩阵<br>print(Q)<br>#本段代码的意图为首先根据贪婪率确定下一步的行为，然后把行为赋值到环境中，获得新的环境以及行为状态<br>for i_episode in range(num_episodes):<br>    # 重置环境<br>    state = env.reset()<br>    step = 0<br>    while True:<br>        step += 1<br>        random_for_egreedy = torch.rand(1)[0]</p>
 <pre><code>    if random_for_egreedy &gt; egreedy:      
         random_values = Q[state] + torch.rand(1,number_of_actions) / 1000      
         action = torch.max(random_values,1)[1][0]  
