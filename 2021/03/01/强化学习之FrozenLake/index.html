@@ -5,17 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>神经网络基础 - master2334 Blog</title>
+    <title>《强化学习之FrozenLake》 - master2334 Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="Work makes me happy,第二章 人工神经网络基础
-神经元是脑组织的基本单元，近860亿个。
-神经网络的组成：生物科学，大数据，超算，纳米科技。
-生物神经元由4部分组成：细胞体，轴突，树突，突触。
-生物信号传输过程：
-信号传,"> 
+    <meta name="description" content="Work makes me happy,import torchimport timeimport matplotlib.pyplot as pltfrom gym.envs.registration import registerimp,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -63,7 +58,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">神经网络基础</h3>
+        <h3 class="subtitle">《强化学习之FrozenLake》</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -93,25 +88,25 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/考试资料"><b>「
-                    </b>考试资料<b> 」</b></a>
+                <a href="/categories/程序经验"><b>「
+                    </b>程序经验<b> 」</b></a>
                 
-                January 10, 2021
+                March 01, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/01/10/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/" title="神经网络基础" class="">神经网络基础</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/03/01/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B9%8BFrozenLake/" title="《强化学习之FrozenLake》" class="">《强化学习之FrozenLake》</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    4.6k
+                    5.3k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    4 mins.
+                    5 mins.
                 </span>
                 
                 
@@ -124,7 +119,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/BP%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">BP神经网络</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/LeNet/" rel="tag">LeNet</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="tag">卷积神经网络</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%84%9F%E7%9F%A5%E5%99%A8/" rel="tag">感知器</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%8E%BB%E5%B0%94%E5%85%B9%E6%9B%BC%E6%9C%BA/" rel="tag">玻尔兹曼机</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%AB%9E%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%BD%91%E7%BB%9C/" rel="tag">竞争学习网络</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Q-Learning/" rel="tag">Q-Learning</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li></ul>
             
         </div>
     </div>
@@ -145,120 +140,51 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="第二章-人工神经网络基础"><a href="#第二章-人工神经网络基础" class="headerlink" title="第二章 人工神经网络基础"></a>第二章 人工神经网络基础</h2><ol>
-<li>神经元是脑组织的基本单元，近860亿个。</li>
-<li>神经网络的组成：生物科学，大数据，超算，纳米科技。</li>
-<li>生物神经元由4部分组成：细胞体，轴突，树突，突触。</li>
-<li>生物信号传输过程：<ul>
-<li>信号传输通过化学信号</li>
-<li>达到阈值标注，发射信号</li>
-<li>突触来控制信号抑制还是传输</li>
-</ul>
-</li>
-<li>生物神经网络中各个神经元之间连接的强弱按照外<br>部的激励信号作<strong>自适应</strong>变化，每个神经元随着接收<br>到的多个激励信号而得到的综合结果呈现出<strong>兴奋或抑制</strong>状态。</li>
-<li>大脑的学习过程就是神经元之间连接强度随外部激<br>励信息作自适应变化的过程，大脑处理信息的结果<br>由各神经元状态的整体效果确定。</li>
-<li><strong>神经元</strong>不仅是组成大脑的基本单元，也是<strong>大脑进行信息处理的基本元件</strong>。</li>
-<li>生物神经元的功能<ul>
-<li>时空整合功能。生物神经元可以对同一时刻来自不同神经元的神经冲动进行组合处理，也可以对不同时刻来自同一突触传入的神经冲动进行组合处理。</li>
-<li>兴奋与抑制。兴奋是传入冲动的时空整合结果使得细胞膜电位升高，超过阈值，细胞进入兴奋状态，产生神经冲动；抑制是细胞膜电位低于阈值，细胞进入抑制状态，无神经冲动。</li>
-<li>突触时延和不应期。不应期是在相邻的两次神经冲动间需要时间间隔。在不应期内，突触对任何激励不做相应。</li>
-<li>学习，遗忘和疲劳。</li>
-<li>脉冲与电位转换。</li>
-<li>神经纤维传导。</li>
-</ul>
-</li>
-<li><strong>人工神经元模型</strong>应该具有生物神经元的基本特性。</li>
-<li>激活函数比较：<ul>
-<li>ReLu</li>
-<li>Sigmoid</li>
-</ul>
-</li>
-</ol>
-<h2 id="第三章-感知器"><a href="#第三章-感知器" class="headerlink" title="第三章 感知器"></a>第三章 感知器</h2><ol>
-<li>神经元的状态取决于细胞自身或从其他的神经细胞收到的输入信号量。当输入或者激励信号量总和超过了某个阈值时，细胞体就会产生电脉冲，电脉冲会沿着轴突通过突触传播到其他神经元。</li>
-<li>感知器第一次引入了<strong>学习</strong>的概念，使得人脑具备的功能在数学中得到了一定的模拟。</li>
-<li>简单感知器模型是M-P模型的结构，是一种单层感知器模型，一层为输入层，另一层具有计算单元。</li>
-<li>感知器即单层神经网络，或者叫神经元，是组成神经网络的最小单元。这种神经元模型由一个线性累加器和传递函数单元组成。</li>
-<li>感知器的激活函数采用阶跃函数或符号函数。</li>
-<li>单层感知器只有输出层神经元进行激活函数处理，即只拥有一层功能神经元，其学习能力非<br>常有限，只能用于解决线性可分的问题，不能解决异或问题。</li>
-<li>感知器的局限性：<ul>
-<li>感知器的激活函数是单向阈值函数，感知器网络的输出值只能取0或1；</li>
-<li>感知器只能对线性可分的向量集合进行分类，不能解决异或问题；</li>
-<li>感知器采用纠错学习规则进行学习，当样本中存在奇异样本时，网络训练所花费的时间就很长。</li>
-</ul>
-</li>
-</ol>
-<h2 id="第四章-反向传播（BP）网络"><a href="#第四章-反向传播（BP）网络" class="headerlink" title="第四章 反向传播（BP）网络"></a>第四章 反向传播（BP）网络</h2><ol>
-<li>梯度：函数在自变量x增加时，最大增长率的方向。</li>
-<li>负梯度：函数的最陡峭下降方向。</li>
-<li>损失函数：定义在单个样本上的，是指一个样本的误差。</li>
-<li>代价函数：定义在整个训练集上的，是所有样本误差的平均，也就是所有损失函数值的平均。</li>
-<li>三种梯度下降优化框架<ul>
-<li>批量梯度下降法<ul>
-<li>每次使用全部的训练样本来进行学习</li>
-<li>优点：每次更新都会朝着正确的方向进行，最后能保证收敛于极值点</li>
-<li>缺点：每次学习的时间过长，并且如果训练集很大， 以至于需要消耗大量的内存们不能进行在线模型参数更新。</li>
-</ul>
-</li>
-<li>随机梯度下降法<ul>
-<li>每次从训练集中随机选择一个样本来进行学习</li>
-<li>优点：每次只随机选择一个样本来更新模型参数，因此每次的学习是非常快速的，并可以进行在线更新。</li>
-<li>缺点：每次更新可能不会朝着正确的方向进行，因此会带来优化波动，使得迭代次数增多，即收敛速度变慢。</li>
-</ul>
-</li>
-<li>小批量梯度下降法<ul>
-<li>在每次更新速度与更新次数中间做一个平衡，其每次更新从训练集中随机选择k个样本进行学习</li>
-<li>优点：相对于随机梯度下降，Mini-batch梯度下降降低了收敛波动性，即降低了参数更新的方差，使得更行更加稳定。相对于批量梯度下降，提高了每次学习的速度。不需要担心内存瓶颈。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>反向传播算法的思想：中间隐层由于不直接与外界连接，误差无法估计。  从后向前反向逐层传播输出层的误差，以间接计算隐层的误差，算法可以分为两个阶段：<ul>
-<li>正向过程：从输入层经隐层逐层正向计算各单元的输出；</li>
-<li>反向过程：由输出误差逐层反向计算隐层个单元的误差，并用此误差修正前层的权值。</li>
-</ul>
-</li>
-</ol>
-<h2 id="第六章-玻尔兹曼机"><a href="#第六章-玻尔兹曼机" class="headerlink" title="第六章 玻尔兹曼机"></a>第六章 玻尔兹曼机</h2><ol>
-<li>玻尔兹曼机是第一个受<strong>统计力学</strong>启发的多层学习机，是一类典型的随机神经网络，属于<strong>反馈神经网络类型</strong>。</li>
-<li>玻尔兹曼机在神经元状态变化中引入了<strong>统计概率</strong>，网络的平衡状态服从玻尔兹曼分布，网络运行机制基于<strong>模拟退火算法</strong>。</li>
-<li>玻尔兹曼机结合多层前馈神经网络和离散Hopfield网络。</li>
-<li>离散Hopfield神经网络+模拟退火+隐单元 = 玻尔兹曼机</li>
-<li>对于BM机，随着网络状态的演变，从概率意义上网络的能量总是朝着减小的方向变化。</li>
-</ol>
-<h2 id="第七章-自组织映射神经网络"><a href="#第七章-自组织映射神经网络" class="headerlink" title="第七章 自组织映射神经网络"></a>第七章 自组织映射神经网络</h2><ol>
-<li>自组织神经网络的典型结构：竞争层与输入层</li>
-<li>自组织神经网络属于竞争性学习网络，包括：<ul>
-<li>输入层起<strong>观察</strong>作用，负责接收外界信息并将输入模式向竞争层传递；</li>
-<li>竞争层起<strong>分析比较</strong>作用，负责找出规律并完成模式归类。各神经元之间的虚线连接线即使模式生物神经网络层内神经元的侧抑制现象。神经细胞一旦兴奋，会对其周围的神经细胞产生<strong>抑制作用</strong>。</li>
-</ul>
-</li>
-<li>自组织学习<ul>
-<li>通过自动寻找样本中的内在规律和本质属性，<strong>自组织、自适应地</strong>改变网络参数与结构。</li>
-<li>自组织网络的自组织功能是通过<strong>竞争学习</strong>实现的。</li>
-<li>分类：在类别知识等导师信号的指导下，将待识别的输入模式分配到各自的模式类中。</li>
-<li>聚类：无导师指导的分类。聚类的目的是将相似的模式样本划归一类，而将不相似的分离开。</li>
-</ul>
-</li>
-<li>相似性测量：余弦法，欧式距离法。</li>
-<li>竞争学习规则：网络的输出神经元之间相互竞争以求被激活，结果在每一时刻只有一个神经元被激活，称为获胜神经元，而其它神经元的状态被抑制，称为胜者为王规则。</li>
-<li>自组织映射的原理：一个神经网络接收外界输入模式时，将会分为不同的对应区域，各区域对输入模式具有不同的相应特征，而且这个过程是自动完成的。</li>
-<li>SOM网采用的学习算法成为Kohonen算法，是在胜者为王算法基础上改进而来的，二者主要的区别在于调整权向量和侧抑制方式不同。<ul>
-<li>侧抑制方式：在胜者为王算法中，只有获胜神经元才有权调整权向量，其他任何神经元都无权调整，因此它对周围所有神经元的抑制是封杀式的。SOM网的获胜神经元对其临近神经元的影响是由近到远，由兴奋转为抑制。</li>
-<li>调整权向量方式：SOM网的学习算法中，不仅获胜神经元本身要调整权向量，其周围的神经元在其影响下也要调整权向量。</li>
-</ul>
-</li>
-<li>神经元的模型确定之后，一个神经网络的特性及能力主要取决于网格以及学习方法。</li>
-<li>在构成多层网络时，层间的转移函数应该是非线性的，否则多层网格的计算能力并不比单层网络强，若干的线性单元层叠加还是线性单元。</li>
-</ol>
-<h2 id="第八章-卷积神经网络"><a href="#第八章-卷积神经网络" class="headerlink" title="第八章 卷积神经网络"></a>第八章 卷积神经网络</h2><ol>
-<li>卷积神经网络(Convolutional Neural Network, CNN)其本质是一个多层感知机，成功的原因在于其所采用的局部连接和权值共享的方式。<ul>
-<li>一方面减少了权值的数量，使得网络易于优化</li>
-<li>另一方面降低了模型的复杂度，减小了过拟合的风险。</li>
-</ul>
-</li>
-<li>卷积操作的核心是：可以约减不必要的权值连接，引入稀疏或者局部连接，带来的权值共享策略大大减少参数量，相对的提升了数据量，从而可以避免过拟合现象的发生。</li>
-</ol>
+            <p>import torch<br>import time<br>import matplotlib.pyplot as plt<br>from gym.envs.registration import register<br>import gym<br>register(<br>    id=’FrozenLakeNotSlippery-v0’,<br>    entry_point=’gym.envs.toy_text:FrozenLakeEnv’,<br>    kwargs={‘map_name’ : ‘4x4’, ‘is_slippery’: False},<br>)<br>plt.ion()<br>env = gym.make(‘FrozenLakeNotSlippery-v0’)</p>
+<h1 id="Instantiate-the-Environment"><a href="#Instantiate-the-Environment" class="headerlink" title="Instantiate the Environment."></a>Instantiate the Environment.</h1><h1 id="env-gym-make-‘FrozenLake-v0’"><a href="#env-gym-make-‘FrozenLake-v0’" class="headerlink" title="env = gym.make(‘FrozenLake-v0’)"></a>env = gym.make(‘FrozenLake-v0’)</h1><h1 id="To-check-all-environments-present-in-OpenAI"><a href="#To-check-all-environments-present-in-OpenAI" class="headerlink" title="To check all environments present in OpenAI"></a>To check all environments present in OpenAI</h1><h1 id="print-envs-registry-all"><a href="#print-envs-registry-all" class="headerlink" title="print(envs.registry.all())"></a>print(envs.registry.all())</h1><p>env.render()</p>
+<p>number_of_states = env.observation_space.n<br>number_of_actions = env.action_space.n<br>print( “States = “, number_of_states)<br>print( “Actions = “, number_of_actions)</p>
+<p>num_episodes = 1000<br>steps_total = []<br>rewards_total = []<br>egreedy_total = []</p>
+<h1 id="PARAMS"><a href="#PARAMS" class="headerlink" title="PARAMS"></a>PARAMS</h1><h1 id="Discount-on-reward"><a href="#Discount-on-reward" class="headerlink" title="Discount on reward"></a>Discount on reward</h1><p>gamma = 0.95</p>
+<h1 id="Factor-to-balance-the-ratio-of-action-taken-based-on-past-experience-to-current-situtation"><a href="#Factor-to-balance-the-ratio-of-action-taken-based-on-past-experience-to-current-situtation" class="headerlink" title="Factor to balance the ratio of action taken based on past experience to current situtation"></a>Factor to balance the ratio of action taken based on past experience to current situtation</h1><p>learning_rate = 0.9</p>
+<h1 id="exploit-vs-explore-to-find-action"><a href="#exploit-vs-explore-to-find-action" class="headerlink" title="exploit vs explore to find action"></a>exploit vs explore to find action</h1><h1 id="Start-with-70-random-actions-to-explore-the-environment"><a href="#Start-with-70-random-actions-to-explore-the-environment" class="headerlink" title="Start with 70% random actions to explore the environment"></a>Start with 70% random actions to explore the environment</h1><h1 id="And-with-time-using-decay-to-shift-to-more-optimal-actions-learned-from-experience"><a href="#And-with-time-using-decay-to-shift-to-more-optimal-actions-learned-from-experience" class="headerlink" title="And with time, using decay to shift to more optimal actions learned from experience"></a>And with time, using decay to shift to more optimal actions learned from experience</h1><p>egreedy = 0.7<br>egreedy_final = 0.1<br>egreedy_decay = 0.999</p>
+<p>Q = torch.zeros([number_of_states, number_of_actions])<br>print(Q)</p>
+<p>for i_episode in range(num_episodes):<br>    # resets the environment<br>    state = env.reset()<br>    step = 0<br>    while True:<br>        step += 1<br>        random_for_egreedy = torch.rand(1)[0]</p>
+<pre><code>    if random_for_egreedy &gt; egreedy:      
+        random_values = Q[state] + torch.rand(1,number_of_actions) / 1000      
+        action = torch.max(random_values,1)[1][0]  
+        #torch.max(tensor, dim)  dim是索引的维度  0是每列的最大值，1是每行的最大值
+        #函数会返回两个tensor，第一个tensor是每行的最大值，softmax的输出中最大的是1，所以第一个tensor是全1的tensor；第二个tensor是每行最大值的索引。
+        action = action.item()
+    else:
+        action = env.action_space.sample()
+
+    if egreedy &gt; egreedy_final:
+        egreedy *= egreedy_decay
+
+    new_state, reward, done, info = env.step(action)
+
+    # Filling the Q Table
+    Q[state, action] = reward + gamma * torch.max(Q[new_state])
+
+    # Setting new state for next action
+    state = new_state
+
+    # env.render()
+    # time.sleep(0.4)
+
+    if done:
+        steps_total.append(step)
+        rewards_total.append(reward)
+        egreedy_total.append(egreedy)
+        if i_episode % 10 == 0:
+            print(&#39;Episode: &#123;&#125; Reward: &#123;&#125; Steps Taken: &#123;&#125;&#39;.format(i_episode,reward, step))
+        break</code></pre>
+<p>print(Q)</p>
+<p>print(“Percent of episodes finished successfully: {0}”.format(sum(rewards_total)/num_episodes))<br>print(“Percent of episodes finished successfully (last 100 episodes): {0}”.format(sum(rewards_total[-100:])/100))</p>
+<p>print(“Average number of steps: %.2f” % (sum(steps_total)/num_episodes))<br>print(“Average number of steps (last 100 episodes): %.2f” % (sum(steps_total[-100:])/100))</p>
+<p>plt.figure(figsize=(6,3))<br>plt.title(“Rewards”)<br>plt.bar(torch.arange(len(rewards_total)), rewards_total, alpha=0.6, color=’green’, width=5)<br>plt.show()</p>
+<p>plt.figure(figsize=(6,3))<br>plt.title(“Steps / Episode length”)<br>plt.bar(torch.arange(len(steps_total)), steps_total, alpha=0.6, color=’red’, width=5)<br>plt.show()</p>
+<p>plt.figure(figsize=(6,3))<br>plt.title(“Egreedy value”)<br>plt.bar(torch.arange(len(egreedy_total)), egreedy_total, alpha=0.6, color=’blue’, width=5)<br>plt.ioff()<br>plt.show()</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -321,7 +247,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E4%BA%BA%E5%B7%A5%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">第二章 人工神经网络基础</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E6%84%9F%E7%9F%A5%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">第三章 感知器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%EF%BC%88BP%EF%BC%89%E7%BD%91%E7%BB%9C"><span class="toc-number">3.</span> <span class="toc-text">第四章 反向传播（BP）网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0-%E7%8E%BB%E5%B0%94%E5%85%B9%E6%9B%BC%E6%9C%BA"><span class="toc-number">4.</span> <span class="toc-text">第六章 玻尔兹曼机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E7%AB%A0-%E8%87%AA%E7%BB%84%E7%BB%87%E6%98%A0%E5%B0%84%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">5.</span> <span class="toc-text">第七章 自组织映射神经网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E7%AB%A0-%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">6.</span> <span class="toc-text">第八章 卷积神经网络</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Instantiate-the-Environment"><span class="toc-number">1.</span> <span class="toc-text">Instantiate the Environment.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#env-gym-make-%E2%80%98FrozenLake-v0%E2%80%99"><span class="toc-number">2.</span> <span class="toc-text">env &#x3D; gym.make(‘FrozenLake-v0’)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#To-check-all-environments-present-in-OpenAI"><span class="toc-number">3.</span> <span class="toc-text">To check all environments present in OpenAI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#print-envs-registry-all"><span class="toc-number">4.</span> <span class="toc-text">print(envs.registry.all())</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PARAMS"><span class="toc-number">5.</span> <span class="toc-text">PARAMS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Discount-on-reward"><span class="toc-number">6.</span> <span class="toc-text">Discount on reward</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Factor-to-balance-the-ratio-of-action-taken-based-on-past-experience-to-current-situtation"><span class="toc-number">7.</span> <span class="toc-text">Factor to balance the ratio of action taken based on past experience to current situtation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exploit-vs-explore-to-find-action"><span class="toc-number">8.</span> <span class="toc-text">exploit vs explore to find action</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Start-with-70-random-actions-to-explore-the-environment"><span class="toc-number">9.</span> <span class="toc-text">Start with 70% random actions to explore the environment</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#And-with-time-using-decay-to-shift-to-more-optimal-actions-learned-from-experience"><span class="toc-number">10.</span> <span class="toc-text">And with time, using decay to shift to more optimal actions learned from experience</span></a></li></ol>
                 </div>
             </div>
             
