@@ -104,13 +104,13 @@ from gym.envs.registr,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    5.4k
+                    3.2k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    5 mins.
+                    3 mins.
                 </span>
                 
                 
@@ -160,12 +160,11 @@ env = gym.make(&#39;FrozenLakeNotSlippery-v0&#39;)
 </code></pre>
 </li>
 </ul>
-<h1 id="Instantiate-the-Environment"><a href="#Instantiate-the-Environment" class="headerlink" title="Instantiate the Environment."></a>Instantiate the Environment.</h1><h1 id="env-gym-make-‘FrozenLake-v0’"><a href="#env-gym-make-‘FrozenLake-v0’" class="headerlink" title="env = gym.make(‘FrozenLake-v0’)"></a>env = gym.make(‘FrozenLake-v0’)</h1><h1 id="To-check-all-environments-present-in-OpenAI"><a href="#To-check-all-environments-present-in-OpenAI" class="headerlink" title="To check all environments present in OpenAI"></a>To check all environments present in OpenAI</h1><h1 id="print-envs-registry-all"><a href="#print-envs-registry-all" class="headerlink" title="print(envs.registry.all())"></a>print(envs.registry.all())</h1><p>env.render()</p>
+<p>env.render()</p>
 <p>number_of_states = env.observation_space.n<br>number_of_actions = env.action_space.n<br>print( “States = “, number_of_states)<br>print( “Actions = “, number_of_actions)</p>
 <p>num_episodes = 1000<br>steps_total = []<br>rewards_total = []<br>egreedy_total = []</p>
-<h1 id="PARAMS"><a href="#PARAMS" class="headerlink" title="PARAMS"></a>PARAMS</h1><h1 id="Discount-on-reward"><a href="#Discount-on-reward" class="headerlink" title="Discount on reward"></a>Discount on reward</h1><p>gamma = 0.95</p>
-<h1 id="Factor-to-balance-the-ratio-of-action-taken-based-on-past-experience-to-current-situtation"><a href="#Factor-to-balance-the-ratio-of-action-taken-based-on-past-experience-to-current-situtation" class="headerlink" title="Factor to balance the ratio of action taken based on past experience to current situtation"></a>Factor to balance the ratio of action taken based on past experience to current situtation</h1><p>learning_rate = 0.9</p>
-<h1 id="exploit-vs-explore-to-find-action"><a href="#exploit-vs-explore-to-find-action" class="headerlink" title="exploit vs explore to find action"></a>exploit vs explore to find action</h1><h1 id="Start-with-70-random-actions-to-explore-the-environment"><a href="#Start-with-70-random-actions-to-explore-the-environment" class="headerlink" title="Start with 70% random actions to explore the environment"></a>Start with 70% random actions to explore the environment</h1><h1 id="And-with-time-using-decay-to-shift-to-more-optimal-actions-learned-from-experience"><a href="#And-with-time-using-decay-to-shift-to-more-optimal-actions-learned-from-experience" class="headerlink" title="And with time, using decay to shift to more optimal actions learned from experience"></a>And with time, using decay to shift to more optimal actions learned from experience</h1><p>egreedy = 0.7<br>egreedy_final = 0.1<br>egreedy_decay = 0.999</p>
+<p>gamma = 0.95<br>learning_rate = 0.9</p>
+<p>egreedy = 0.7<br>egreedy_final = 0.1<br>egreedy_decay = 0.999</p>
 <p>Q = torch.zeros([number_of_states, number_of_actions])<br>print(Q)</p>
 <p>for i_episode in range(num_episodes):<br>    # resets the environment<br>    state = env.reset()<br>    step = 0<br>    while True:<br>        step += 1<br>        random_for_egreedy = torch.rand(1)[0]</p>
 <pre><code>    if random_for_egreedy &gt; egreedy:      
@@ -263,13 +262,6 @@ env = gym.make(&#39;FrozenLakeNotSlippery-v0&#39;)
             </div>
             
             
-            
-            <div class="box sticky animated fadeInRight faster">
-                <div id="toc" class="subbox">
-                    <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Instantiate-the-Environment"><span class="toc-number">1.</span> <span class="toc-text">Instantiate the Environment.</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#env-gym-make-%E2%80%98FrozenLake-v0%E2%80%99"><span class="toc-number">2.</span> <span class="toc-text">env &#x3D; gym.make(‘FrozenLake-v0’)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#To-check-all-environments-present-in-OpenAI"><span class="toc-number">3.</span> <span class="toc-text">To check all environments present in OpenAI</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#print-envs-registry-all"><span class="toc-number">4.</span> <span class="toc-text">print(envs.registry.all())</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PARAMS"><span class="toc-number">5.</span> <span class="toc-text">PARAMS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Discount-on-reward"><span class="toc-number">6.</span> <span class="toc-text">Discount on reward</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Factor-to-balance-the-ratio-of-action-taken-based-on-past-experience-to-current-situtation"><span class="toc-number">7.</span> <span class="toc-text">Factor to balance the ratio of action taken based on past experience to current situtation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exploit-vs-explore-to-find-action"><span class="toc-number">8.</span> <span class="toc-text">exploit vs explore to find action</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Start-with-70-random-actions-to-explore-the-environment"><span class="toc-number">9.</span> <span class="toc-text">Start with 70% random actions to explore the environment</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#And-with-time-using-decay-to-shift-to-more-optimal-actions-learned-from-experience"><span class="toc-number">10.</span> <span class="toc-text">And with time, using decay to shift to more optimal actions learned from experience</span></a></li></ol>
-                </div>
-            </div>
             
             
         </div>
