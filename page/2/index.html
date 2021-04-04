@@ -5,12 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Python爬取疫情实时数据 - master2334 Blog</title>
+    <title>master2334 Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="Work makes me happy,用python爬取疫情数据网站的实时数据流一些网站的数据并没有写在html源码中，而是通过数据流实时获取的，因此需要在F12中找到数据流的JSON文件，通过解析JSON文件来获取自己想要的信息。此程,"> 
+    <meta name="description" content="Work makes me happy,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -51,78 +51,130 @@
     </div>
     <span id="config-title" style="display:none">master2334 Blog</span>
     <div id="loader"></div>
-    <div id="single">
-    <div class="scrollbar gradient-bg-rev"></div>
-<div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <div class="navigation animated fadeIn fast delay-1s">
-        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
-        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Python爬取疫情实时数据</h3>
-        <div class="social">
-            <!--        <div class="like-icon">-->
-            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-            <!--        </div>-->
-            <div>
-                <div class="share">
-                    
-                        <a href="javascript:;" class="iconfont icon-share1"></a>
-                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
-                    
-                </div>
-            </div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/whoami/" title="ABOUT" external="false">ABOUT</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/categories/" title="CATEGORIES" external="false">CATEGORIES</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/tags/" title="TAGS" external="false">TAGS</a>
+        </li>
+        
+        <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/archives/" title="ARCHIVES" external="false">ARCHIVES</a>
+        </li>
+        
+    </ul>
+    <p class="copyright" id="copyright">
+        &copy; 2021 master2334.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/TriDiamond/hexo-theme-obsidian" title="Obsidian" target="_blank" rel="noopener">Obsidian</a>
+    </p>
+</div>
+
+<div id="container">
+    
+<div class="search-box">
+    <form class="site-search-form">
+        <span class="iconfont icon-search"></span>
+        <input type="text" id="local-search-input" class="st-search-input" />
+        <div class="iconfont icon-cross search-box-close"></div>
+    </form>
+    <div class="search-scrollable">
+        <div id="local-search-result" class="local-search-result-cls" data-initialise="Initialising search index..."
+            data-start="Please input search keywords." data-empty="No result found, please try other keywords.">
+            <span>Please input search keywords.</span>
         </div>
     </div>
 </div>
-
-    <div class="section">
-        <div class=article-header-wrapper>
-    <div class="article-header">
-        <div class="article-cover animated fadeIn" style="
-            animation-delay: 600ms;
-            animation-duration: 1.2s;
-            background-image: 
-                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
-                url(/img/cover.jpg) ">
+<div id="header">
+    <div>
+        <div class="logo animated fadeInDown">
+            <img src="/img/favicon.png" alt="">
+            <a class="image-logo" href="/"></a>
         </div>
-        <div class="else">
-            <p class="animated fadeInDown">
-                
-                <a href="/categories/程序经验"><b>「
-                    </b>程序经验<b> 」</b></a>
-                
-                January 18, 2021
-            </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/01/18/Python%E7%88%AC%E5%8F%96%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE/" title="Python爬取疫情实时数据" class="">Python爬取疫情实时数据</a>
-            </h3>
+        <ul id="menu-menu" class="menu text-menu">
             
-            <p class="post-count animated fadeInDown">
-                
-                <span>
-                    <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    2.6k
-                </span>
-                
-                
-                <span>
-                    <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    2 mins.
-                </span>
-                
-                
-                
-                <span id="busuanzi_container_page_pv">
-                    <b class="iconfont icon-read"></b> <i>Read count</i>
-                    <span id="busuanzi_value_page_pv">0</span>
-                </span>
-                
-            </p>
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/whoami/" title="ABOUT" external="false" class="menu-link">ABOUT</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/categories/" title="CATEGORIES" external="false" class="menu-link">CATEGORIES</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/tags/" title="TAGS" external="false" class="menu-link">TAGS</a>
+            </li>
+            
+            <li class="animated fadeInDown menu-item menu-item-type-post_type menu-item-object-page">
+                <a href="/archives/" title="ARCHIVES" external="false" class="menu-link">ARCHIVES</a>
+            </li>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%B5%81/" rel="tag">实时数据流</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+            <li class="animated fadeInDown search-bar iconfont icon-search"></li>
             
+        </ul>
+        <div class="iconfont icon-menu switchmenu gradient-text animated fadeInDown"></div>
+    </div>
+</div>
+<div id="screen">
+    <div id="mark">
+        <div class="cover animated fadeIn" style="
+            animation-delay: 900ms;
+            animation-duration: 2.8s;
+            background-image:
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.56), #100e17),
+                url(/img/cover.jpg);">
         </div>
     </div>
+    
+    <div id="post0" class="else">
+        <p class="animated fadeInDown">
+            
+            <a href="/categories/读书笔记"><b>「
+                </b>读书笔记<b> 」</b></a>
+            
+            January 10, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown">
+            <a href="/2021/01/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0(DeepLearning)/" title="《深度学习DeepLearning》" class="posttitle">《深度学习DeepLearning》</a></h3>
+        
+        <p class="post-count animated fadeInDown">
+            
+            <span>
+                <b class="iconfont icon-text2"></b> <i>Words count</i>
+                2.7k
+            </span>
+            
+            
+            <span>
+                <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                2 mins.
+            </span>
+            
+            
+        </p>
+        
+        
+        <div class="md-content animated fadeIn">
+            
+            <pre><code> 本文是个人对于图灵异步图书《深度学习》的读书笔记，希望与各位分享，不足之处欢迎提出修改意见</code></pre>
+<h3 id="一、早期的人工智能"><a href="#一、早期的人工智能" class="headerlink" title="一、早期的人工智能"></a>一、早期的人工智能</h3><ol>
+<li>人工智能早期主要用于解决可以用一系列形式化数学规则来描述的问题。</li>
+<li>这种规则化的系统遇到...</li></ol>
+            
+            <span class="read-more"><a href="/2021/01/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0(DeepLearning)/" title="Read article" class="posttitle">Read article</a>
+                <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+    
 </div>
 
 <div class="screen-gradient-after">
@@ -130,141 +182,69 @@
         <div class="screen-gradient-content-inside">
             <div class="bold-underline-links screen-gradient-sponsor">
                 <p>
-                    <span class="animated fadeIn delay-1s"></span>
+                    <span class="typed-text"></span>
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<div class="article">
-    <div class='main'>
-        <div class="content markdown animated fadeIn">
-            <h2 id="用python爬取疫情数据网站的实时数据流"><a href="#用python爬取疫情数据网站的实时数据流" class="headerlink" title="用python爬取疫情数据网站的实时数据流"></a>用python爬取疫情数据网站的实时数据流</h2><p>一些网站的数据并没有写在html源码中，而是通过数据流实时获取的，因此需要在F12中找到数据流的JSON文件，通过解析JSON文件来获取自己想要的信息。<br>此程序的功能是通过<code>json.loads()</code>解析json源文件，然后将json源文件保存在txt文件以及数据库中。</p>
-<pre><code class="python">import requests
-from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
-import json, jsonpath
-import sqlite3
-
-url = &#39;https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=chinaDayList,chinaDayAddList,nowConfirmStatis,provinceCompare&#39;
-
-conn = sqlite3.connect(&#39;.\YQdata.db&#39;)
-c = conn.cursor()
-c.execute(&#39;&#39;&#39;CREATE TABLE IF NOT EXISTS datas
-             (Province text, nowConfirm text, confirmAdd text, dead text, heal text)&#39;&#39;&#39;)
-
-#requests.session() 会话保持，可以让我们在跨请求时保存某些操作
-#在爬虫中，需要用到session来保持登录状态，一些网站会要求强制登陆，登录信息不完整时，返回的数据信息也不完整
-session = requests.session()
-result = session.get(url)
-#json.loads()  将json格式解析为dict格式  
-#json.dumps()  将dict格式解析为json格式
-resJson = json.loads(result.text)
-data = jsonpath.jsonpath(resJson, &#39;$.data.chinaDayAddList.*&#39;)
-
-for d in data:
-    #res为字符串格式的拼接   d[&#39;date&#39;]为字典键值的引用
-    res = &#39;日期:&#39; + d[&#39;date&#39;] + &#39;--&#39; + &#39;新增确诊:&#39; + str(d[&#39;confirm&#39;]) + &#39;--&#39; + &#39;死亡人数:&#39; + str(d[&#39;dead&#39;]) + &#39;--&#39; + &#39;感染人数:&#39; + str(d[&#39;infect&#39;])+ &#39;--&#39; + &#39;治愈人数:&#39; + str(d[&#39;heal&#39;])
-    # 保存数据到指定路径
-    file = &#39;.\global-yq.txt&#39;
-    with open(file, &#39;a+&#39;,encoding=&#39;utf-8&#39;) as f:
-        f.write(res + &#39;\n&#39;)  # 加\n换行显示
-data2 = jsonpath.jsonpath(resJson, &#39;$.data.provinceCompare.&#39;)
-
-# 字典格式的常用方法
-# for k in data2[0].values():
-#     print(data2[0][k])
-
-#使用zip方法，将两个list同时迭代
-for (key, value) in zip(data2[0].keys(), data2[0].values()):
-   # print(value)
-    com = &quot;INSERT INTO datas VALUES (?,?,?,?,?)&quot;
-    c.execute(com,tuple((str(key),value[&#39;nowConfirm&#39;],value[&#39;confirmAdd&#39;],value[&#39;dead&#39;],value[&#39;heal&#39;])))
-    res =  str(key) + &#39;--&#39; + &#39;新增确诊:&#39; + str(value[&#39;nowConfirm&#39;])  + &#39;--&#39; + &#39;无症状感染者:&#39; + str(value[&#39;confirmAdd&#39;]) + &#39;--&#39; +  &#39;死亡人数:&#39; + str(value[&#39;dead&#39;]) + &#39;--&#39; +  &#39;治愈人数:&#39; + str(value[&#39;heal&#39;])
-    # 保存数据到我的d盘
-    file = &#39;.\china-yq.txt&#39;
-    with open(file, &#39;a+&#39;,encoding=&#39;utf-8&#39;) as f:
-        f.write(res + &#39;\n&#39;)  # 加\n换行显示
-
-conn.commit()
-conn.close()
-
-
-</code></pre>
-
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls"
-                data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
+    <div id="primary">
+        
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
             
-            <ul id="audio-list" style="display:none">
+                <a href="/categories/读书笔记">
+                  <b>「 </b>读书笔记<b> 」</b>
+                </a>
+            
+            January 10, 2021
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/2021/01/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0(DeepLearning)/" title="《深度学习DeepLearning》" class="posttitle">《深度学习DeepLearning》</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>Words count</i>
+                        2.7k
+                    </span>
                 
                 
-                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
+                        2 mins.
+                    </span>
                 
-                    
-            </ul>
+                
+            </p>
             
+        
+        <div class="md-content animated fadeIn">
             
+                <pre><code> 本文是个人对于图灵异步图书《深度学习》的读书笔记，希望与各位分享，不足之处欢迎提出修改意见</code></pre>
+<h3 id="一、早期的人工智能"><a href="#一、早期的人工智能" class="headerlink" title="一、早期的人工智能"></a>一、早期的人工智能</h3><ol>
+<li>人工智能早期主要用于解决可以用一系列形式化数学规则来描述的问题。</li>
+<li>这种规则化的系统遇到的主要挑战在于解决对人来说很容易执行，但很难形式化描述的任务。</li>
+<li> 代表实例为知识库方法。知识库是将世界的知识用形式化的语言进行硬解码，从而使计算机可以通过逻辑推理规则来自动理解形式化语言中的声明。其中Cyc项目通过一个推理引擎和Cylc语言声明的数据库就是基于此思想实现的项目。</li>
+<li>早期人工智能最大的弊...</li></ol>
             
-    <div id='gitalk-container' class="comment link"
-        data-ae='true'
-        data-ci='ec894e2b66f752e8b7fb'
-        data-cs='3ccc2e92bb350688fe2c2dc2930189b62622bfb1'
-        data-r='blog-comments'
-        data-o='TriDiamond'
-        data-a='TriDiamond'
-        data-d=''
-    >Comments</div>
-
-
-            
-            
-        </div>
-        <div class="sidebar">
-            <div class="box animated fadeInRight">
-                <div class="subbox">
-                    <img src="https://res.cloudinary.com/tridiamond/image/upload/v1573019751/TriDiamond_logo_ui_xeublz.jpg" height=300 width=300></img>
-                    <p>master2334</p>
-                    <span>Think like an artist, develop like an artisan</span>
-                    <dl>
-                        <dd><a href="https://github.com/TriDiamond" target="_blank"><span
-                                    class=" iconfont icon-github"></span></a></dd>
-                        <dd><a href="https://twitter.com/TriDiamond6" target="_blank"><span
-                                    class=" iconfont icon-twitter"></span></a></dd>
-                        <dd><a href="https://stackoverflow.com/users/7602324/tridiamond?tab=profile" target="_blank"><span
-                                    class=" iconfont icon-stack-overflow"></span></a></dd>
-                    </dl>
-                </div>
-                <ul>
-                    <li><a href="/">11 <p>Articles</p></a></li>
-                    <li><a href="/categories">8 <p>Categories</p></a></li>
-                    <li><a href="/tags">24 <p>Tags</p></a></li>
-                </ul>
-                <ul>
-                    <br><span><b><p>友链博客</p></b></span><br>
-                    <span><u><p><a href="https://ximikang.github.io/" target="_blank">ximikang</a></p></u></span>
-                </ul>
-            </div>
-            
-            
-            
-            <div class="box sticky animated fadeInRight faster">
-                <div id="toc" class="subbox">
-                    <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8python%E7%88%AC%E5%8F%96%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE%E7%BD%91%E7%AB%99%E7%9A%84%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%B5%81"><span class="toc-number">1.</span> <span class="toc-text">用python爬取疫情数据网站的实时数据流</span></a></li></ol>
-                </div>
-            </div>
-            
-            
+            <span class="read-more"><a href="/2021/01/10/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0(DeepLearning)/" title="Read article" class="posttitle">Read article</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
 
+
     </div>
+    
 </div>
+<div id="preview"></div>
+
     <div id="back-to-top" class="animated fadeIn faster">
         <div class="flow"></div>
         <span class="percentage animated fadeIn faster">0%</span>

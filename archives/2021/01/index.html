@@ -61,9 +61,44 @@
                 <div class="content animated fadeIn">
                     <div class="set">
                         <h1 style="text-align: center">Archived</h1>
-                        <p style="text-align: center">「 10 」</p>
+                        <p style="text-align: center">「 11 」</p>
                         <ul class="timeline timeline-centered">
                             
+                            
+                                
+                                <li class="timeline-item period">
+                                    <div class="timeline-info"></div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h2 class="timeline-title">April 2021</h2>
+                                    </div>
+                                </li>
+                                
+                                <li class="timeline-item">
+                                    <div class="timeline-info">
+                                        <span class="gradient-text">April 04, 2021</span>
+                                    </div>
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <a class="timeline-title" target="_self" href="/2021/04/04/%E6%96%B0%E5%94%90%E6%8E%A7%E6%B0%B4%E6%8E%A7%E9%9B%A8%E4%B8%BB%E6%9C%BA%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/">新唐控水控雨主机调试过程</a>
+                                        <p>
+                                            串口接收问题
+使用定义好的USART0接收时一直无法在PC端接收到数据。
+问题解决。接线错误，对485认识不够。485在通信时只需要接对AB两根线，D+接A，D-接B，共地即可。
+
+
+串口接收中断。
+问题解决。直接使用中断中的RX_buffer[]数组会有数据丢失问题，需要使用经过断包处理的UART_in数组来接收。
+
+
+注意
+串口连续发送会出现未知数据。 
+
+
+usart0的UART0_i...
+                                        </p>
+                                    </div>
+                                </li>
                             
                                 
                                 <li class="timeline-item period">

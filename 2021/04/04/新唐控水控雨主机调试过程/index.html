@@ -5,12 +5,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Python爬取疫情实时数据 - master2334 Blog</title>
+    <title>新唐控水控雨主机调试过程 - master2334 Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="Work makes me happy,用python爬取疫情数据网站的实时数据流一些网站的数据并没有写在html源码中，而是通过数据流实时获取的，因此需要在F12中找到数据流的JSON文件，通过解析JSON文件来获取自己想要的信息。此程,"> 
+    <meta name="description" content="Work makes me happy,串口接收问题
+使用定义好的USART0接收时一直无法在PC端接收到数据。
+问题解决。接线错误，对485认识不够。485在通信时只需要接对AB两根线，D+接A，D-接B，共地即可。
+
+
+串口接收中断。,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -58,7 +63,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Python爬取疫情实时数据</h3>
+        <h3 class="subtitle">新唐控水控雨主机调试过程</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -88,19 +93,19 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/程序经验"><b>「
-                    </b>程序经验<b> 」</b></a>
+                <a href="/categories/调试经验"><b>「
+                    </b>调试经验<b> 」</b></a>
                 
-                January 18, 2021
+                April 04, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/01/18/Python%E7%88%AC%E5%8F%96%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE/" title="Python爬取疫情实时数据" class="">Python爬取疫情实时数据</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/04/04/%E6%96%B0%E5%94%90%E6%8E%A7%E6%B0%B4%E6%8E%A7%E9%9B%A8%E4%B8%BB%E6%9C%BA%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/" title="新唐控水控雨主机调试过程" class="">新唐控水控雨主机调试过程</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    2.6k
+                    2k
                 </span>
                 
                 
@@ -119,7 +124,7 @@
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%B5%81/" rel="tag">实时数据流</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%88%AC%E8%99%AB/" rel="tag">爬虫</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Fuzzy-To-PID/" rel="tag">Fuzzy To PID</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/MODBUS-RTU/" rel="tag">MODBUS-RTU</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E6%96%B0%E5%94%90NUC126%E7%B3%BB%E5%88%97/" rel="tag">新唐NUC126系列</a></li></ul>
             
         </div>
     </div>
@@ -140,58 +145,62 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="用python爬取疫情数据网站的实时数据流"><a href="#用python爬取疫情数据网站的实时数据流" class="headerlink" title="用python爬取疫情数据网站的实时数据流"></a>用python爬取疫情数据网站的实时数据流</h2><p>一些网站的数据并没有写在html源码中，而是通过数据流实时获取的，因此需要在F12中找到数据流的JSON文件，通过解析JSON文件来获取自己想要的信息。<br>此程序的功能是通过<code>json.loads()</code>解析json源文件，然后将json源文件保存在txt文件以及数据库中。</p>
-<pre><code class="python">import requests
-from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
-import json, jsonpath
-import sqlite3
-
-url = &#39;https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=chinaDayList,chinaDayAddList,nowConfirmStatis,provinceCompare&#39;
-
-conn = sqlite3.connect(&#39;.\YQdata.db&#39;)
-c = conn.cursor()
-c.execute(&#39;&#39;&#39;CREATE TABLE IF NOT EXISTS datas
-             (Province text, nowConfirm text, confirmAdd text, dead text, heal text)&#39;&#39;&#39;)
-
-#requests.session() 会话保持，可以让我们在跨请求时保存某些操作
-#在爬虫中，需要用到session来保持登录状态，一些网站会要求强制登陆，登录信息不完整时，返回的数据信息也不完整
-session = requests.session()
-result = session.get(url)
-#json.loads()  将json格式解析为dict格式  
-#json.dumps()  将dict格式解析为json格式
-resJson = json.loads(result.text)
-data = jsonpath.jsonpath(resJson, &#39;$.data.chinaDayAddList.*&#39;)
-
-for d in data:
-    #res为字符串格式的拼接   d[&#39;date&#39;]为字典键值的引用
-    res = &#39;日期:&#39; + d[&#39;date&#39;] + &#39;--&#39; + &#39;新增确诊:&#39; + str(d[&#39;confirm&#39;]) + &#39;--&#39; + &#39;死亡人数:&#39; + str(d[&#39;dead&#39;]) + &#39;--&#39; + &#39;感染人数:&#39; + str(d[&#39;infect&#39;])+ &#39;--&#39; + &#39;治愈人数:&#39; + str(d[&#39;heal&#39;])
-    # 保存数据到指定路径
-    file = &#39;.\global-yq.txt&#39;
-    with open(file, &#39;a+&#39;,encoding=&#39;utf-8&#39;) as f:
-        f.write(res + &#39;\n&#39;)  # 加\n换行显示
-data2 = jsonpath.jsonpath(resJson, &#39;$.data.provinceCompare.&#39;)
-
-# 字典格式的常用方法
-# for k in data2[0].values():
-#     print(data2[0][k])
-
-#使用zip方法，将两个list同时迭代
-for (key, value) in zip(data2[0].keys(), data2[0].values()):
-   # print(value)
-    com = &quot;INSERT INTO datas VALUES (?,?,?,?,?)&quot;
-    c.execute(com,tuple((str(key),value[&#39;nowConfirm&#39;],value[&#39;confirmAdd&#39;],value[&#39;dead&#39;],value[&#39;heal&#39;])))
-    res =  str(key) + &#39;--&#39; + &#39;新增确诊:&#39; + str(value[&#39;nowConfirm&#39;])  + &#39;--&#39; + &#39;无症状感染者:&#39; + str(value[&#39;confirmAdd&#39;]) + &#39;--&#39; +  &#39;死亡人数:&#39; + str(value[&#39;dead&#39;]) + &#39;--&#39; +  &#39;治愈人数:&#39; + str(value[&#39;heal&#39;])
-    # 保存数据到我的d盘
-    file = &#39;.\china-yq.txt&#39;
-    with open(file, &#39;a+&#39;,encoding=&#39;utf-8&#39;) as f:
-        f.write(res + &#39;\n&#39;)  # 加\n换行显示
-
-conn.commit()
-conn.close()
-
-
-</code></pre>
+            <h2 id="串口接收问题"><a href="#串口接收问题" class="headerlink" title="串口接收问题"></a>串口接收问题</h2><ul>
+<li>使用定义好的USART0接收时一直无法在PC端接收到数据。<ul>
+<li>问题解决。接线错误，对485认识不够。485在通信时只需要接对AB两根线，D+接A，D-接B，共地即可。</li>
+</ul>
+</li>
+<li>串口接收中断。<ul>
+<li>问题解决。直接使用中断中的RX_buffer[]数组会有数据丢失问题，需要使用经过断包处理的UART_in数组来接收。</li>
+</ul>
+</li>
+<li>注意<ul>
+<li>串口连续发送会出现未知数据。 </li>
+</ul>
+</li>
+<li>usart0的UART0_in由于丢包问题需要移位使用。<h2 id="CRC校验问题"><a href="#CRC校验问题" class="headerlink" title="CRC校验问题"></a>CRC校验问题</h2></li>
+<li>本次校验使用CRC16-MODBUS标准。其中校验位低位在前，高位在后。<ul>
+<li>中途出错，因为调用CRC函数时，返回值存储在u8数值中，造成了数据丢失。<h2 id="EEPROM问题"><a href="#EEPROM问题" class="headerlink" title="EEPROM问题"></a>EEPROM问题</h2></li>
+</ul>
+</li>
+<li>在底层库中已经有封装好的EEPROM写入以及读取程序，出错原因是没有拉低写保护。<h2 id="MODBUS-RTU的理解"><a href="#MODBUS-RTU的理解" class="headerlink" title="MODBUS-RTU的理解"></a>MODBUS-RTU的理解</h2></li>
+<li>不理解初始结构/结束结构  大于4字符的时间如何代码实现。</li>
+</ul>
+<h2 id="RS485问题"><a href="#RS485问题" class="headerlink" title="RS485问题"></a>RS485问题</h2><ul>
+<li>485挂载多台设备如何实现。<ul>
+<li>主机发送消息时，所有从机设备都会收到，但是需要将数据地址与自身地址做比较。   从机不能向主机主动发送数据。</li>
+</ul>
+</li>
+<li>由于485采用半双工模式，所以必须采用轮询的方式来获取传感器数据，即向一个传感器发送读取寄存器的指令后，马上读取串口中断接收函数。</li>
+</ul>
+<h2 id="蠕动泵"><a href="#蠕动泵" class="headerlink" title="蠕动泵"></a>蠕动泵</h2><ul>
+<li>使用何种算法。</li>
+</ul>
+<h2 id="控水系统"><a href="#控水系统" class="headerlink" title="控水系统"></a>控水系统</h2><ul>
+<li>用于控水的模糊控制算法</li>
+<li>设置死区； 控水量； 间隔时间；</li>
+</ul>
+<h2 id="控雨系统"><a href="#控雨系统" class="headerlink" title="控雨系统"></a>控雨系统</h2><ul>
+<li>控雨系数为0，不需要向系统供水。</li>
+<li>控雨系数&lt;1，减雨控制</li>
+<li>控雨系数&gt;1,增雨控制               </li>
+<li>通过降雨体积量乘以系数得出供水量，通过蠕动泵向土体供水。</li>
+</ul>
+<h4 id="疑问记录"><a href="#疑问记录" class="headerlink" title="疑问记录"></a>疑问记录</h4><ul>
+<li>从机所控制的传感器地址是否需要留修改的接口</li>
+<li>多个传感器如何接线</li>
+<li>传感器的地址如何设定</li>
+<li>主机向从机发送的代码示例</li>
+<li>4个传感器的湿度数据是一直读取吗</li>
+<li></li>
+</ul>
+<h4 id="任务完成度"><a href="#任务完成度" class="headerlink" title="任务完成度"></a>任务完成度</h4><ul>
+<li>把各个串口的RS485接收\发送程序封装好。<ul>
+<li>完成</li>
+</ul>
+</li>
+<li>封装4个读取土壤传感器湿度的函数</li>
+</ul>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -254,7 +263,7 @@ conn.close()
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8python%E7%88%AC%E5%8F%96%E7%96%AB%E6%83%85%E6%95%B0%E6%8D%AE%E7%BD%91%E7%AB%99%E7%9A%84%E5%AE%9E%E6%97%B6%E6%95%B0%E6%8D%AE%E6%B5%81"><span class="toc-number">1.</span> <span class="toc-text">用python爬取疫情数据网站的实时数据流</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%B2%E5%8F%A3%E6%8E%A5%E6%94%B6%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">串口接收问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CRC%E6%A0%A1%E9%AA%8C%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">CRC校验问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EEPROM%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">EEPROM问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MODBUS-RTU%E7%9A%84%E7%90%86%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">MODBUS-RTU的理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RS485%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">RS485问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A0%95%E5%8A%A8%E6%B3%B5"><span class="toc-number">6.</span> <span class="toc-text">蠕动泵</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E6%B0%B4%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.</span> <span class="toc-text">控水系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A7%E9%9B%A8%E7%B3%BB%E7%BB%9F"><span class="toc-number">8.</span> <span class="toc-text">控雨系统</span></a></li></ol>
                 </div>
             </div>
             
