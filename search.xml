@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>图像增强方法</title>
+      <link href="2021/04/27/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%B3%95/"/>
+      <url>2021/04/27/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<h2 id="直方图均衡优化"><a href="#直方图均衡优化" class="headerlink" title="直方图均衡优化"></a>直方图均衡优化</h2><p><img src="/source/_posts/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA.png" alt="avatar"></p><ul><li>直方图均衡优化是指将一幅已知灰度概率密度分布的图像经过一种变换，将其转变为均衡灰度概率密度分布的新图像。</li><li>直方图均衡优化的步骤：<ul><li>1.计算累计直方图</li><li>2.将累计直方图进行区间转换</li><li>3.在累计直方图中，概率相近的原始值，会被处理为相同的值 </li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 研究 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 图像增强 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>新唐控水控雨主机调试过程</title>
       <link href="2021/04/04/%E6%96%B0%E5%94%90%E6%8E%A7%E6%B0%B4%E6%8E%A7%E9%9B%A8%E4%B8%BB%E6%9C%BA%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/"/>
       <url>2021/04/04/%E6%96%B0%E5%94%90%E6%8E%A7%E6%B0%B4%E6%8E%A7%E9%9B%A8%E4%B8%BB%E6%9C%BA%E8%B0%83%E8%AF%95%E8%BF%87%E7%A8%8B/</url>

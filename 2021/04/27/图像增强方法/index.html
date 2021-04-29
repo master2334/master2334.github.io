@@ -5,16 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Gym-Reinforcement-FrozenLake - master2334 Blog</title>
+    <title>图像增强方法 - master2334 Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="Work makes me happy,
-使用Open-AI中的gym库创建环境。import torch
-import time
-import matplotlib.pyplot as plt
-from gym.envs.registr,"> 
+    <meta name="description" content="Work makes me happy,直方图均衡优化
+
+直方图均衡优化是指将一幅已知灰度概率密度分布的图像经过一种变换，将其转变为均衡灰度概率密度分布的新图像。
+直方图均衡优化的步骤：
+1.计算累计直方图
+2.将累计直方图进行区间转换
+,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -62,7 +64,7 @@ from gym.envs.registr,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">Gym-Reinforcement-FrozenLake</h3>
+        <h3 class="subtitle">图像增强方法</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -92,25 +94,25 @@ from gym.envs.registr,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/程序经验"><b>「
-                    </b>程序经验<b> 」</b></a>
+                <a href="/categories/研究"><b>「
+                    </b>研究<b> 」</b></a>
                 
-                March 01, 2021
+                April 27, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/03/01/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%B9%8BFrozenLake/" title="Gym-Reinforcement-FrozenLake" class="">Gym-Reinforcement-FrozenLake</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/04/27/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%B3%95/" title="图像增强方法" class="">图像增强方法</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    3.4k
+                    362
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    3 mins.
+                    1 mins.
                 </span>
                 
                 
@@ -123,7 +125,7 @@ from gym.envs.registr,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Q-Learning/" rel="tag">Q-Learning</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" rel="tag">强化学习</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA/" rel="tag">图像增强</a></li></ul>
             
         </div>
     </div>
@@ -144,87 +146,14 @@ from gym.envs.registr,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <ul>
-<li>使用Open-AI中的gym库创建环境。<pre><code class="python">import torch
-import time
-import matplotlib.pyplot as plt
-from gym.envs.registration import register
-import gym
-register(
-  id=&#39;FrozenLakeNotSlippery-v0&#39;,
-  entry_point=&#39;gym.envs.toy_text:FrozenLakeEnv&#39;,
-  kwargs=&#123;&#39;map_name&#39; : &#39;4x4&#39;, &#39;is_slippery&#39;: False&#125;,
-)
-plt.ion() #plt默认为阻塞模式，.ion为解除阻塞
-env = gym.make(&#39;FrozenLakeNotSlippery-v0&#39;)#创建环境
-env.render() #加载图像引擎</code></pre>
-</li>
-<li>确定好需要使用的参数值。<pre><code class="python">number_of_states = env.observation_space.n
-number_of_actions = env.action_space.n
-print( &quot;States = &quot;, number_of_states)
-print( &quot;Actions = &quot;, number_of_actions)
-num_episodes = 1000
-steps_total = []
-rewards_total = []
-egreedy_total = []
-gamma = 0.95  # 未来行为最大化收益的期望占比
-learning_rate = 0.9   #学习率
-egreedy = 0.7  #贪婪率    值越低，代表经验占比越高
-egreedy_final = 0.1
-egreedy_decay = 0.999
-Q = torch.zeros([number_of_states, number_of_actions])   #创建一个新的Q值矩阵</code></pre>
-</li>
-<li>本段代码的意图为首先根据贪婪率确定下一步的行为，然后把行为赋值到环境中，获得新的环境以及行为状态。</li>
-<li>获得新的Q值矩阵。</li>
-<li>获得新的状态，行为信息。<pre><code class="python">for i_episode in range(num_episodes):
-  # 重置环境
-  state = env.reset()
-  step = 0
-  while True:
-      step += 1
-      random_for_egreedy = torch.rand(1)[0]
-      if random_for_egreedy &gt; egreedy:      
-          random_values = Q[state] + torch.rand(1,number_of_actions) / 1000      
-          action = torch.max(random_values,1)[1][0]  
-          #torch.max(tensor, dim)  dim是索引的维度  0是每列的最大值，1是每行的最大值
-          #函数会返回两个tensor，第一个tensor是每行的最大值，softmax的输出中最大的是1，所以第一个tensor是全1的tensor；第二个tensor是每行最大值的索引。
-          action = action.item()
-      else:
-          action = env.action_space.sample()
-      if egreedy &gt; egreedy_final:
-          egreedy *= egreedy_decay
-      new_state, reward, done, info = env.step(action)
-      # Filling the Q Table
-      Q[state, action] = reward + gamma * torch.max(Q[new_state])
-      # Setting new state for next action
-      state = new_state
-      # env.render()
-      # time.sleep(0.4)
-      if done:
-          steps_total.append(step)
-          rewards_total.append(reward)
-          egreedy_total.append(egreedy)
-          if i_episode % 10 == 0:
-              print(&#39;Episode: &#123;&#125; Reward: &#123;&#125; Steps Taken: &#123;&#125;&#39;.format(i_episode,reward, step))
-          break</code></pre>
-</li>
-<li>在plt中显示rewards，steps，egreedy的变化曲线<pre><code class="python">print(&quot;Percent of episodes finished successfully: &#123;0&#125;&quot;.format(sum(rewards_total)/num_episodes))
-print(&quot;Percent of episodes finished successfully (last 100 episodes): &#123;0&#125;&quot;.format(sum(rewards_total[-100:])/100))
-print(&quot;Average number of steps: %.2f&quot; % (sum(steps_total)/num_episodes))
-print(&quot;Average number of steps (last 100 episodes): %.2f&quot; % (sum(steps_total[-100:])/100))
-plt.figure(figsize=(6,3))
-plt.title(&quot;Rewards&quot;)
-plt.bar(torch.arange(len(rewards_total)), rewards_total, alpha=0.6, color=&#39;green&#39;, width=5)
-plt.show()
-plt.figure(figsize=(6,3))
-plt.title(&quot;Steps / Episode length&quot;)
-plt.bar(torch.arange(len(steps_total)), steps_total, alpha=0.6, color=&#39;red&#39;, width=5)
-plt.show()
-plt.figure(figsize=(6,3))
-plt.title(&quot;Egreedy value&quot;)
-plt.bar(torch.arange(len(egreedy_total)), egreedy_total, alpha=0.6, color=&#39;blue&#39;, width=5)
-plt.ioff()
-plt.show()</code></pre>
+            <h2 id="直方图均衡优化"><a href="#直方图均衡优化" class="headerlink" title="直方图均衡优化"></a>直方图均衡优化</h2><p><img src="/source/_posts/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA.png" alt="avatar"></p>
+<ul>
+<li>直方图均衡优化是指将一幅已知灰度概率密度分布的图像经过一种变换，将其转变为均衡灰度概率密度分布的新图像。</li>
+<li>直方图均衡优化的步骤：<ul>
+<li>1.计算累计直方图</li>
+<li>2.将累计直方图进行区间转换</li>
+<li>3.在累计直方图中，概率相近的原始值，会被处理为相同的值 </li>
+</ul>
 </li>
 </ul>
 
@@ -285,6 +214,13 @@ plt.show()</code></pre>
             </div>
             
             
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>Contents</h4>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E4%BC%98%E5%8C%96"><span class="toc-number">1.</span> <span class="toc-text">直方图均衡优化</span></a></li></ol>
+                </div>
+            </div>
             
             
         </div>
