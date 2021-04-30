@@ -103,7 +103,7 @@ Hexo：hexo是一个,">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    2.3k
+                    2.4k
                 </span>
                 
                 
@@ -165,27 +165,32 @@ Hexo：hexo是一个,">
 <li>之后每次提交时，进行<code>git add *</code>操作将文件添加至暂存区，然后<code>git commit -m &quot;name&quot;</code>将文件添加至发送区，之后就可以通过<code>hexo d -g</code>将本次修改同步到博客中</li>
 </ol>
 <h2 id="连接本地仓库与github远程仓库"><a href="#连接本地仓库与github远程仓库" class="headerlink" title="连接本地仓库与github远程仓库"></a>连接本地仓库与github远程仓库</h2><ol>
-<li>终端输入<code>git init </code></li>
-<li>使用git bash时，需要git config配置个人信息<ul>
+<li>终端输入<code>git init </code>,初始化git配置</li>
+<li>首次使用git bash时，需要git config配置个人信息<ul>
 <li><code>git config --global user.name &quot;用户名&quot;</code></li>
 <li><code>git config --global user.mail 邮箱@163.com</code></li>
 </ul>
 </li>
 <li>上传代码至暂存区 <ul>
-<li><code>git add *</code>  提交所有文件</li>
+<li><code>git add *</code>  提交所有文件至暂存区</li>
 <li><code>git add 文件名</code> 提交当前文件</li>
-<li><code>git commit -m &quot;提交说明&quot;</code></li>
+<li><code>git commit -m &quot;提交说明&quot;</code>  提交文件至本地仓库</li>
 </ul>
 </li>
 <li>过程中可以使用指令来查看当前状态<ul>
 <li><code>git status</code> 查看当前操作状态</li>
 <li><code>git log</code>   查看提交记录</li>
 <li><code>git diff</code> 查看工作区与暂存区的差异</li>
+<li><code>git reflog</code> 查看历史提交信息以及版本号<ul>
+<li>可以根据指针来查看当前版本位置</li>
+</ul>
+</li>
+<li><code>git reset --hard 版本号</code> 回退历史版本（版本穿梭）</li>
 </ul>
 </li>
 <li>创建分支<ul>
 <li><code>git branch name</code> 创建新的分支</li>
-<li><code>git branch</code>  查看分支状态</li>
+<li><code>git branch -v</code>  查看分支状态</li>
 <li><code>git checkout name</code> 切换分支</li>
 <li><code>git merge name</code> 合并分支</li>
 <li><code>git branch -d name</code> 删除分支</li>
