@@ -8,7 +8,7 @@
       <link href="2021/04/27/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%B3%95/"/>
       <url>2021/04/27/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA%E6%96%B9%E6%B3%95/</url>
       
-        <content type="html"><![CDATA[<h2 id="直方图均衡优化"><a href="#直方图均衡优化" class="headerlink" title="直方图均衡优化"></a>直方图均衡优化</h2><p><img src="https://master2334.github.io/img/%E5%9B%BE%E5%83%8F%E5%A2%9E%E5%BC%BA.png" alt="avatar"></p><ul><li>直方图均衡优化是指将一幅已知灰度概率密度分布的图像经过一种变换，将其转变为均衡灰度概率密度分布的新图像。</li><li>直方图均衡优化的步骤：<ul><li>1.计算累计直方图</li><li>2.将累计直方图进行区间转换</li><li>3.在累计直方图中，概率相近的原始值，会被处理为相同的值 </li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="直方图均衡优化"><a href="#直方图均衡优化" class="headerlink" title="直方图均衡优化"></a>直方图均衡优化</h2><p><img src="https://master2334.github.io/img/inhense.png" alt="avatar"></p><ul><li>直方图均衡优化是指将一幅已知灰度概率密度分布的图像经过一种变换，将其转变为均衡灰度概率密度分布的新图像。</li><li>直方图均衡优化的步骤：<ul><li>1.计算累计直方图</li><li>2.将累计直方图进行区间转换</li><li>3.在累计直方图中，概率相近的原始值，会被处理为相同的值 </li></ul></li></ul>]]></content>
       
       
       <categories>
