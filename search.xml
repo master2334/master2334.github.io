@@ -4,11 +4,65 @@
   
     
     <entry>
+      <title>匿名科创无人机代码解析</title>
+      <link href="2021/05/19/%E5%8C%BF%E5%90%8D%E7%A7%91%E5%88%9B%E6%97%A0%E4%BA%BA%E6%9C%BA%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90/"/>
+      <url>2021/05/19/%E5%8C%BF%E5%90%8D%E7%A7%91%E5%88%9B%E6%97%A0%E4%BA%BA%E6%9C%BA%E4%BB%A3%E7%A0%81%E8%A7%A3%E6%9E%90/</url>
+      
+        <content type="html"><![CDATA[<h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><ol><li>主循环的Duty_Loop（）是一个时间切换的简单状态机，包含5个时间状态<ul><li>Duty_1ms()主要用于控制起飞状态。<ul><li>Tim_Count，计数到15s后解锁起飞，youcanfly标志位打开，否则标志位置零</li><li>youcanfly标志位打开后，LED灯切换到启动显示状态</li><li>LED_Display( LED_Brightness );  等待起飞的信号指示</li><li>调用数传通信，向上位机传输数据</li></ul></li><li>Duty_2ms() 用于计算姿态内环以及遥控器数据处理<ul><li>MPU6050_Data_Prepare()<ul><li>MPU6050_Data_Offset()校准函数<ul><li>加速度计、角速度计均值滤波，放到文件操作系统里当无人机未解锁时，根据动作判断是否要进行矫正。</li></ul></li><li>读取加速度、角速度数据，温漂补偿，并采用滑动窗口进行均值滤波。</li><li>坐标转指针传入结构体。</li></ul></li><li>CTRL_1( inner_loop_time );内环角速度PID</li><li>RC_Duty()遥控器数据处理<ul><li>滤波。</li><li>是否有信号。</li><li>一段时间内没接收到信号，则连接断开。</li></ul></li></ul></li><li>Duty_5ms() 姿态外环控制<ul><li>IMU进行姿态解算</li><li>加速度PID控制</li></ul></li><li>Duty_10ms() 气压计 电子罗盘数据更新</li><li>Duty_20ms() 参数保存到FLash</li><li>Duty_50ms()<ul><li>Mode()  模式控制，只在特定条件下，遥控器生效</li><li></li></ul></li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 知识储备 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 无人机 </tag>
+            
+            <tag> STM32 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数学基础知识</title>
+      <link href="2021/05/08/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+      <url>2021/05/08/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ul><li>1. </li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 知识储备 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux使用</title>
       <link href="2021/05/04/linux%E4%BD%BF%E7%94%A8/"/>
       <url>2021/05/04/linux%E4%BD%BF%E7%94%A8/</url>
       
-        <content type="html"><![CDATA[<h2 id="用户相关"><a href="#用户相关" class="headerlink" title="用户相关"></a>用户相关</h2><ul><li></li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="用户相关"><a href="#用户相关" class="headerlink" title="用户相关"></a>用户相关</h2><ul><li><h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2></li><li><p>rmdir MyDoc </p><ul><li>删除空文件夹</li></ul></li><li><p>rm -rf MyDocuments/</p><ul><li>强制删除</li></ul></li></ul>]]></content>
       
       
       <categories>
@@ -258,35 +312,6 @@
         <tags>
             
             <tag> Git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>数学基础知识</title>
-      <link href="2021/01/11/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
-      <url>2021/01/11/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 程序经验 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 3*3卷积核 </tag>
-            
-            <tag> 2层卷积网络 </tag>
-            
-            <tag> 1层2*2池化层 </tag>
             
         </tags>
       
