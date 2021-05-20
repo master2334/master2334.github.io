@@ -5,12 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PyTorch学习笔记 - master2334 Blog</title>
+    <title> - master2334 Blog</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="Work makes me happy,repeat()和expand() 区别torch.Tensor()是包含一种数据类型元素的多维矩阵。torch.Tensor()有两种方法可以用来拓展某维数据的尺寸，分别是expand()和rep,"> 
+    <meta name="description" content="Work makes me happy,FATFS文件系统
+
+底层接口，包括存储媒介读／写接口（disk I/O）和供给文件创建修改时间的实时时钟，需要我们根据平台和存储介质编写移植代码。
+
+
+
+中间层FATFS模块，实现了FAT 文件读,"> 
     <meta name="author" content="master2334"> 
     <link rel="alternative" href="atom.xml" title="master2334 Blog" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -58,7 +64,7 @@
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://example.com">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">PyTorch学习笔记</h3>
+        <h3 class="subtitle"></h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -88,25 +94,24 @@
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/学习笔记"><b>「
-                    </b>学习笔记<b> 」</b></a>
+                <a href="javascript:;"><b>「 </b>Article<b> 」</b></a>
                 
-                January 12, 2021
+                May 19, 2021
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/2021/01/12/PyTorch%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="PyTorch学习笔记" class="">PyTorch学习笔记</a>
+            <h3 class="post-title animated fadeInDown"><a href="/2021/05/19/FATFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="Untitled" class="">Untitled</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>Words count</i>
-                    480
+                    2.5k
                 </span>
                 
                 
                 <span>
                     <b class="iconfont icon-timer__s"></b> <i>Reading time</i>
-                    1 mins.
+                    2 mins.
                 </span>
                 
                 
@@ -118,8 +123,6 @@
                 
             </p>
             
-            
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/PyTorch/" rel="tag">PyTorch</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a></li></ul>
             
         </div>
     </div>
@@ -140,9 +143,84 @@
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h2 id="repeat-和expand-区别"><a href="#repeat-和expand-区别" class="headerlink" title="repeat()和expand() 区别"></a>repeat()和expand() 区别</h2><p>torch.Tensor()是包含一种数据类型元素的多维矩阵。<br>torch.Tensor()有两种方法可以用来拓展某维数据的尺寸，分别是expand()和repeat():</p>
-<h3 id="expand"><a href="#expand" class="headerlink" title="expand()"></a>expand()</h3><p>返回当前张量在某维扩展后更大的张量。扩展张量不会分配新的内存，只是在当前存在的张量上创建新的视图，一个大小等于1的维度扩展到更大的尺寸。</p>
-<h3 id="repeat"><a href="#repeat" class="headerlink" title="repeat()"></a>repeat()</h3>
+            <h2 id="FATFS文件系统"><a href="#FATFS文件系统" class="headerlink" title="FATFS文件系统"></a>FATFS文件系统</h2><ul>
+<li><ol>
+<li>底层接口，包括存储媒介读／写接口（disk I/O）和供给文件创建修改时间的实时时钟，需要我们根据平台和存储介质编写移植代码。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>中间层FATFS模块，实现了FAT 文件读／写协议。FATFS模块提供的是ff.c和ff.h。除非有必要，使用者一般不用修改，使用时将头文件直接包含进去即可。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>最顶层是应用层，使用者无需理会FATFS的内部结构和复杂的FAT 协议，只需要调用FATFS模块提供给用户的一系列应用接口函数，如f_open，f_read，f_write 和f_close等，就可以像在PC 上读／写文件那样简单。</li>
+</ol>
+</li>
+</ul>
+<h2 id="Fatfs文件系统操作流程"><a href="#Fatfs文件系统操作流程" class="headerlink" title="Fatfs文件系统操作流程"></a>Fatfs文件系统操作流程</h2><ul>
+<li><ol>
+<li>为磁盘工作区申请内存</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>为相关文件，图片缓存区申请缓存区域</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>通过f_mount为文件系统挂载物理内存</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>通过f_opendir打开文件夹</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>通过pic_get_tnum获取文件总数</li>
+</ol>
+</li>
+</ul>
+<h2 id="程序流程"><a href="#程序流程" class="headerlink" title="程序流程"></a>程序流程</h2><ul>
+<li><ol>
+<li>KEY1按键按下时 检测SD卡</li>
+</ol>
+</li>
+</ul>
+<h2 id="SD卡初始化"><a href="#SD卡初始化" class="headerlink" title="SD卡初始化"></a>SD卡初始化</h2><ul>
+<li>通过引脚复用，使用F4的SDIO模块进行配置</li>
+<li>由于SD卡读取大文件速度较慢，故挂载在DMA上保证主流程运行速度</li>
+<li>通过SDIO为SD卡上电。</li>
+<li>获取SD卡信息  卡的类型，结构，大小等信息。</li>
+<li>选中SD卡，设置始终频率，DMA模式（数据传输模式），以及工作模式。</li>
+</ul>
+<h1 id="malloc动态内存"><a href="#malloc动态内存" class="headerlink" title="malloc动态内存"></a>malloc动态内存</h1><ul>
+<li>申请内存 mymalloc(SRAMIN,100);</li>
+<li>分配内存 (FIL*)mymalloc(SRAMIN,sizeof(FIL));</li>
+<li>释放内存 myfree(SRAMIN,fftemp);</li>
+</ul>
+<h2 id="CCM内存"><a href="#CCM内存" class="headerlink" title="CCM内存"></a>CCM内存</h2><ul>
+<li>CCM(Core Coupled Memory)是给F4内核专用的全速64KB RAM, 它们没有经过总线矩阵, F4内核与之直接相连, 地址空间在0x1000_0000 ~ 0x1000_FFFF.</li>
+</ul>
+<h2 id="SD协议"><a href="#SD协议" class="headerlink" title="SD协议"></a>SD协议</h2><ul>
+<li><ol>
+<li>SDIO_CK时钟是通过PC12引脚连接到SD卡的，是SDIO接口与SD卡用于同步的时钟。</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>SDIO选配器挂载到AHB总线上，通过HCLK二分频输入到适配器得到SDIO_CK的时钟，这时SDIO_CK = HCLK/（2+CLKDIV）。其中CLKDIV是SDIO_CLK(寄存器)中的CLKDIV位。</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>另外，SDIO_CK也可以由SDIOCLK通过设置bypass模式直接得到，这时SDIO_CK = SDIOCLK=HCLK。</li>
+</ol>
+</li>
+</ul>
+<p>通过下面的库函数来配置时钟：<br>SDIO_Init(&amp;SDIO_InitStructure);</p>
+<p>对SD卡的操作一般是大吞吐量的数据传输，所以采用DMA来提高效率，SDIO采用的是DMA2中的通道4。在数据传输的时候SDIO可向DMA发出请求。</p>
+<h2 id="BMP解码"><a href="#BMP解码" class="headerlink" title="BMP解码"></a>BMP解码</h2><ul>
+<li>信息包括位图文件头(bitmap-file header)、位图信息头(bitmap-information header)、彩色表(color table)和定义位图的字节阵列。</li>
+<li>JPEG 标记码(Tag)和压缩数据。标记码由两个字节构成，其前一个字节是固定值0xFF，后一个字节则根据不同意义有不同数值。</li>
+</ul>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
                 data-autoplay="false">
@@ -204,7 +282,7 @@
             <div class="box sticky animated fadeInRight faster">
                 <div id="toc" class="subbox">
                     <h4>Contents</h4>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#repeat-%E5%92%8Cexpand-%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">repeat()和expand() 区别</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#expand"><span class="toc-number">1.1.</span> <span class="toc-text">expand()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#repeat"><span class="toc-number">1.2.</span> <span class="toc-text">repeat()</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#FATFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">FATFS文件系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fatfs%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">Fatfs文件系统操作流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">程序流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SD%E5%8D%A1%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">SD卡初始化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#malloc%E5%8A%A8%E6%80%81%E5%86%85%E5%AD%98"><span class="toc-number"></span> <span class="toc-text">malloc动态内存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CCM%E5%86%85%E5%AD%98"><span class="toc-number">1.</span> <span class="toc-text">CCM内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SD%E5%8D%8F%E8%AE%AE"><span class="toc-number">2.</span> <span class="toc-text">SD协议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BMP%E8%A7%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">BMP解码</span></a></li></ol>
                 </div>
             </div>
             
